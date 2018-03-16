@@ -1,8 +1,5 @@
 package jeu.src.capacite;
 
-import jeu.src.exception.HearthstoneException;
-
-
 /**
  *
  * @author bagnato2u
@@ -34,7 +31,7 @@ public class AttaqueCiblee extends Attaque {
     }
 
     @Override
-    public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
+    public void executerEffetMiseEnJeu(Object cible) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

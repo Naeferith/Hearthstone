@@ -1,8 +1,4 @@
 package jeu.src;
-
-import jeu.src.exception.HearthstoneException;
-
-
 /**
  *
  * @author bagnato2u
@@ -15,7 +11,7 @@ public interface ICapacite {
     public abstract void executerEffetDebutTour();
     public abstract void executerEffetDisparition(Object cible);
     public abstract void executerEffetFinTour();
-    public abstract void executerEffetMiseEnJeu(Object cible) throws HearthstoneException;
+    public abstract void executerEffetMiseEnJeu(Object cible);
     public abstract String getDescription();
     public abstract String getNom();
     public abstract void setUse(boolean bool);

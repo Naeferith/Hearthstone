@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jeu.src;
 
 import java.util.ArrayList;
 import java.util.Random;
-import jeu.src.exception.HearthstoneException;
 
 /**
  *
@@ -26,16 +20,16 @@ public class Plateau implements IPlateau {
     }
     
     @Override
-    public final void ajouterJoueur(IJoueur joueur) throws HearthstoneException {
-        if (this.joueurs.size() == 2) throw new HearthstoneException("La partie est déja complète.");
-        if (this.joueurs.contains(joueur)) throw new HearthstoneException("Le joueur est déja dans la partie");
+    public final void ajouterJoueur(IJoueur joueur){
+        if (this.joueurs.size() == 2) ; //Partie deja commence
+        if (this.joueurs.contains(joueur)) ; //Joueur deja en partie
         this.joueurs.add(joueur);
     }
 
     @Override
-    public final void demarrerPartie() throws HearthstoneException {
-        if (this.estDemaree()) throw new HearthstoneException("La partie est déja en cours.");
-        if (this.joueurs.size() != 2) throw new HearthstoneException("Il faut 2 joueurs pour commencer une partie");
+    public final void demarrerPartie() {
+        if (this.estDemaree()) ; //Partie deja en cours
+        if (this.joueurs.size() != 2) ; //2 players required
         
         //Détermination du 1er joueur
         Random rand = new Random();

@@ -1,14 +1,11 @@
 package jeu.src;
-
-import jeu.src.exception.HearthstoneException;
-
 /**
  *
  * @author bagnato2u
  */
 public interface IPlateau {
-    public abstract void ajouterJoueur(IJoueur joueur) throws HearthstoneException;
-    public abstract void demarrerPartie() throws HearthstoneException;
+    public abstract void ajouterJoueur(IJoueur joueur);
+    public abstract void demarrerPartie();
     public abstract boolean estDemaree();
     public abstract void finTour(IJoueur joueur);
     public abstract void gagnePartie(IJoueur joueur);
