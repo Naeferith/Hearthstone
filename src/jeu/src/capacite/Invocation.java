@@ -5,6 +5,11 @@
  */
 package jeu.src.capacite;
 
+import java.util.ArrayList;
+import jeu.src.ICarte;
+import jeu.src.IJoueur;
+import jeu.src.IPlateau;
+import jeu.src.Plateau;
 import jeu.src.carte.Serviteur;
 
 /**
@@ -12,10 +17,10 @@ import jeu.src.carte.Serviteur;
  * @author Thømas
  */
 public class Invocation extends Capacite {
-    private Serviteur nouveauServiteur = null;
-    private int effectif; 
+    private ICarte nouveauServiteur;
+    private final int effectif; 
     
-    public Invocation(String nom, String description, Serviteur serviteur, int effectif) {
+    public Invocation(String nom, String description, ICarte serviteur, int effectif) {
         super(nom, description);
         this.nouveauServiteur = serviteur;
         this.effectif = effectif;
@@ -23,7 +28,19 @@ public class Invocation extends Capacite {
 
     @Override
     public void executerAction(Object cible) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Invoquer n serviteurs ne requiert pas de cible, il faut juste les mettre sur le board
+        ArrayList<ICarte> nouveauxServiteurs = new ArrayList<>();
+        IPlateau plateau = Plateau.getPlateau();
+        IJoueur cur = plateau.getJoueurCourant();
+        
+        //Nombre réel de serviteurs à invoquer
+        int n = (cur.getJeu().size() + effectif <= IJoueur.TAILLE_BOARD) ? cur.getJeu().size() + effectif : IJoueur.TAILLE_BOARD - cur.getJeu().size() ;
+        
+        //Création des nouveaux serviteurs
+        for (int i = 0; i < n; i++) nouveauxServiteurs.add(new Serviteur((Serviteur) this.nouveauServiteur));
+        
+        //Les nouveaux serviteurs joignent le board
+        cur.getJeu().addAll(nouveauxServiteurs);
     }
 
     @Override

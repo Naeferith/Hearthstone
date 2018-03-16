@@ -15,7 +15,7 @@ public abstract class Carte implements ICarte {
     private IJoueur owner;
     private ICapacite capacite;
 
-    public Carte(String nom, int mana, IJoueur joueur, Capacite capacite) {
+    public Carte(String nom, int mana, IJoueur joueur, ICapacite capacite) {
         this.nom = nom;
         this.mana = mana;
         this.owner = joueur;

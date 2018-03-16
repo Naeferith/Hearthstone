@@ -1,5 +1,6 @@
 package jeu.src.carte;
 
+import jeu.src.ICapacite;
 import jeu.src.capacite.Capacite;
 import jeu.src.IJoueur;
 
@@ -11,10 +12,16 @@ public final class Serviteur extends Carte {
     private int atk;
     private int pv;
 
-    public Serviteur(String nom, int mana, IJoueur joueur, Capacite capacite, int atk, int pv) {
+    public Serviteur(String nom, int mana, IJoueur joueur, ICapacite capacite, int atk, int pv) {
         super(nom, mana, joueur, capacite);
         this.atk = atk;
         this.pv = pv;
+    }
+    
+    public Serviteur(Serviteur s) {
+        super(s.getNom(), s.getCout(), s.getProprietaire(), s.getCapacite());
+        this.atk = s.getAtk();
+        this.pv  = s.getPv();
     }
     
     @Override
