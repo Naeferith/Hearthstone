@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jeu.src.capacite;
 
 import jeu.src.IJoueur;
 import jeu.src.IPlateau;
 import jeu.src.Plateau;
 
-/**
+/**Capacité à attaquer un héros rn ignorant tout serviteur avec provocation
  *
  * @author bagnato2u
  */

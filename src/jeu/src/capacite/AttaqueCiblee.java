@@ -1,6 +1,6 @@
 package jeu.src.capacite;
 
-/**
+/**Capacité à appliquer un effet (serviteur seulement) et/ou infliger des dégats une cible quelconque
  *
  * @author bagnato2u
  */

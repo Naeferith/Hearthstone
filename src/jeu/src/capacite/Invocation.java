@@ -12,8 +12,8 @@ import jeu.src.IPlateau;
 import jeu.src.Plateau;
 import jeu.src.carte.Serviteur;
 
-/**
- *
+/**Capacité à invoquer un ou plusieurs serviteurs identiques
+ * 
  * @author Thømas
  */
 public class Invocation extends Capacite {
