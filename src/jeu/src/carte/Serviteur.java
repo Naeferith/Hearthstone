@@ -1,7 +1,6 @@
 package jeu.src.carte;
 
 import jeu.src.ICapacite;
-import jeu.src.capacite.Capacite;
 import jeu.src.IJoueur;
 
 /**
@@ -26,6 +25,7 @@ public final class Serviteur extends Carte {
     
     @Override
     public boolean disparait() {
+        //TODO : Reel calcul du resultat
         return true;
     }
 

@@ -63,7 +63,7 @@ public class Main {
                         plateau.demarrerPartie();
                     }
                     catch (HearthstoneException e){
-                        System.out.println("Erreur : " + e);
+                        System.out.println("Erreur : " + e.getMessage());
                     }
                     break;
                 case "2": {
@@ -77,7 +77,7 @@ public class Main {
                             heros = Heros.getHeros(scanIn.nextLine());
                         }
                         catch (HearthstoneException e) {
-                            System.out.println("Erreur : " + e);
+                            System.out.println("Erreur : " + e.getMessage());
                         }
                     }
                     while("".equals(pseudo) || heros == null);
@@ -85,7 +85,7 @@ public class Main {
                         plateau.ajouterJoueur(new Joueur(pseudo, heros));
                     }
                     catch(HearthstoneException e) {
-                        System.out.println("Erreur : " + e);
+                        System.out.println("Erreur : " + e.getMessage());
                     }
                     //System.out.println("[DEBUG] Player " + pseudo + " (" + heros.getNom() + ") added to the game.");
                     }
