@@ -2,6 +2,7 @@ package jeu.src;
 
 import java.util.ArrayList;
 import java.util.Random;
+import jeu.src.exception.HearthstoneException;
 
 /**
  *
@@ -13,30 +14,30 @@ public class Plateau implements IPlateau {
     private IJoueur joueurCourant = null;
     private ArrayList<IJoueur> joueurs = new ArrayList<IJoueur>();
     
-    //Il ne doit y avoir qu'une seule instance de plateau
+    //Il ne doit y avoir qu'une seule instance de plateau, on l'initialise a chaque début de partie
     public static IPlateau getPlateau() {
         if (plateau == null) plateau = new Plateau();
         return plateau;
     }
     
     @Override
-    public final void ajouterJoueur(IJoueur joueur){
-        if (this.joueurs.size() == 2) ; //Partie deja commence
-        if (this.joueurs.contains(joueur)) ; //Joueur deja en partie
+    public final void ajouterJoueur(IJoueur joueur) throws HearthstoneException{
+        if (this.joueurs.size() == 2) throw new HearthstoneException("La partie est complète.");
+        if (this.joueurs.contains(joueur)) throw new HearthstoneException("Le joueur est déja en partie.");
         this.joueurs.add(joueur);
     }
 
     @Override
-    public final void demarrerPartie() {
-        if (this.estDemaree()) ; //Partie deja en cours
-        if (this.joueurs.size() != 2) ; //2 players required
+    public final void demarrerPartie() throws HearthstoneException {
+        if (this.estDemaree()) throw new HearthstoneException("La partie est déja en cours.");
+        if (this.joueurs.size() != 2) throw new HearthstoneException("2 joueurs sont requis pour commencer une partie.");
         
         //Détermination du 1er joueur
         Random rand = new Random();
         int i = rand.nextInt(2);
         this.setJoueurCourant(this.joueurs.get(i));
         this.estDemaree();
-        this.getJoueurCourant().prendreTour();              //Le joueur prend la main
+        this.getJoueurCourant().prendreTour(); //Le joueur prend la main
     }
 
     @Override
@@ -45,14 +46,15 @@ public class Plateau implements IPlateau {
     }
 
     @Override
-    public final void finTour(IJoueur joueur) {
+    public final void finTour(IJoueur joueur) throws HearthstoneException {
         this.setJoueurCourant(this.getAdversaire(joueur));  //Changement de joueur courant
         this.getJoueurCourant().prendreTour();              //Le nouveau joueur prend la main
     }
 
     @Override
-    public final void gagnePartie(IJoueur joueur) {
+    public final void gagnePartie(IJoueur joueur) throws HearthstoneException {
         System.out.println(this.getAdversaire(joueur).getPseudo() + " [" + this.getAdversaire(joueur).getHeros().getNom() + "] à gagné.");
+        
         //Fin de partie
         this.enCours = false;
         //Reinitialisation du plateau
@@ -60,8 +62,8 @@ public class Plateau implements IPlateau {
     }
 
     @Override
-    public final IJoueur getAdversaire(IJoueur joueur) {
-        if (!this.estDemaree()) ;//Exception la partie doit etre démarée
+    public final IJoueur getAdversaire(IJoueur joueur) throws HearthstoneException {
+        if (!this.estDemaree()) throw new HearthstoneException("La partie n'est pas encore commencée.");
         return (this.getJoueurCourant() == this.joueurs.get(0)) ? this.joueurs.get(1) : this.joueurs.get(0);
     }
 

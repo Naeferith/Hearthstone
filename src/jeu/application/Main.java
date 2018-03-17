@@ -21,7 +21,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws HearthstoneException {
+    public static void main(String[] args) {
         //Creation des 2 adversaires
         //Joueur j1 = new Joueur("John Cena", Heros.getHeros("Jaina"));
         //Joueur j2 = new Joueur("BeastMaster64", Heros.getHeros("Rexxar"));
@@ -59,7 +59,12 @@ public class Main {
                     System.exit(0);
                     break;
                 case "1":
-                    plateau.demarrerPartie();
+                    try {
+                        plateau.demarrerPartie();
+                    }
+                    catch (HearthstoneException e){
+                        System.out.println("Erreur : " + e);
+                    }
                     break;
                 case "2": {
                     String pseudo = "";
@@ -71,7 +76,12 @@ public class Main {
                         heros = Heros.getHeros(scanIn.nextLine());
                     }
                     while("".equals(pseudo) || heros == null);
-                    plateau.ajouterJoueur(new Joueur(pseudo, heros));
+                    try {
+                        plateau.ajouterJoueur(new Joueur(pseudo, heros));
+                    }
+                    catch(HearthstoneException e) {
+                        System.out.println("Erreur : " + e);
+                    }
                     //System.out.println("[DEBUG] Player " + pseudo + " (" + heros.getNom() + ") added to the game.");
                     }
                     break;
