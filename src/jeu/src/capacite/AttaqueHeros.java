@@ -3,8 +3,9 @@ package jeu.src.capacite;
 import jeu.src.IJoueur;
 import jeu.src.IPlateau;
 import jeu.src.Plateau;
+import jeu.src.exception.HearthstoneException;
 
-/**Capacité à attaquer un héros rn ignorant tout serviteur avec provocation
+/**Capacité à attaquer un héros en ignorant tout serviteur avec provocation
  *
  * @author bagnato2u
  */
@@ -15,10 +16,8 @@ public class AttaqueHeros extends Attaque {
     }
 
     @Override
-    public final void executerAction(Object cible) {
-        if (this.isUse()) {
-            System.out.println("deja utilise");
-        }
+    public final void executerAction(Object cible) throws HearthstoneException {
+        if (this.isUse()) throw new HearthstoneException("Pouvoir héroique déja utilisé ce tour.");
         else {
             this.setUse(true);
             IPlateau plateau = Plateau.getPlateau();
@@ -31,7 +30,7 @@ public class AttaqueHeros extends Attaque {
     public void executerEffetDebutTour() {}
 
     @Override
-    public void executerEffetDisparition(Object cible) {}
+    public void executerEffetDisparition(Object cible) throws HearthstoneException {}
 
     @Override
     public void executerEffetFinTour() {}

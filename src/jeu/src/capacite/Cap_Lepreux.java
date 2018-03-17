@@ -1,5 +1,7 @@
 package jeu.src.capacite;
 
+import jeu.src.exception.HearthstoneException;
+
 /**
  *
  * @author Thømas
@@ -11,7 +13,7 @@ public class Cap_Lepreux extends AttaqueHeros {
     }
 
     @Override
-    public void executerEffetDisparition(Object cible) {
+    public void executerEffetDisparition(Object cible) throws HearthstoneException {
         super.executerAction(cible);
     }
 }

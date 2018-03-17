@@ -4,13 +4,14 @@ import static jeu.src.ICapacite.COUT_POUVOIR;
 import jeu.src.carte.Serviteur;
 import java.util.ArrayList;
 import java.util.Random;
+import jeu.src.exception.HearthstoneException;
 
 /**
  *
  * @author bagnato2u
  */
 public class Joueur implements IJoueur {
-    private String pseudo;
+    private final String pseudo;
     private ArrayList<ICarte> board;
     private ArrayList<ICarte> deck;
     private ArrayList<ICarte> main;
@@ -121,7 +122,7 @@ public class Joueur implements IJoueur {
     }
 
     @Override
-    public void piocher() {
+    public void piocher() throws HearthstoneException {
         //Fatigue
         if (this.getDeck().isEmpty()) {
             this.getHeros().setPv(this.getHeros().getPv() - this.fatigue);
@@ -148,7 +149,7 @@ public class Joueur implements IJoueur {
     }
 
     @Override
-    public void prendreTour() {
+    public void prendreTour() throws HearthstoneException {
         //Le pool de mana augmente de 1
         this.setMana(this.getMana() + 1);
         
@@ -179,9 +180,8 @@ public class Joueur implements IJoueur {
     }
 
     @Override
-    public void utiliserPouvoir(Object cible) {
+    public void utiliserPouvoir(Object cible) throws HearthstoneException {
         if (this.getStockMana() < COUT_POUVOIR) this.heros.getPouvoir().executerAction(cible);
-        //else throw new HearthstoneException("Mana insuffisant");
+        else throw new HearthstoneException("Mana insuffisant.");
     }
-
 }

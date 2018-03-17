@@ -2,6 +2,8 @@ package jeu.src.carte;
 
 import jeu.src.capacite.Capacite;
 import jeu.src.IJoueur;
+import jeu.src.Plateau;
+import jeu.src.exception.HearthstoneException;
 
 /**
  *
@@ -13,25 +15,32 @@ public final class Sort extends Carte {
         super(nom, mana, joueur, capacite);
     }
 
+    
     @Override
-    public boolean disparait() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public final boolean disparait() {
+        //un sort disparait toujours après utilisation
+        return false;
     }
 
     @Override
-    public void executerAction(Object cible) {}
+    public final void executerAction(Object cible) {}
 
     @Override
-    public void executerEffetDebutMiseEnJeu(Object cible) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public final void executerEffetDebutMiseEnJeu(Object cible) throws HearthstoneException {
+        if (this.getCout() > Plateau.getPlateau().getJoueurCourant().getStockMana()) throw new HearthstoneException("Mana Insuffisant.");
+        
+        this.getCapacite().executerEffetMiseEnJeu(cible);
+        
+        //Après execution de la capacité, on détruit la carte
+        Plateau.getPlateau().getJoueurCourant().getMain().remove(this);
     }
 
     @Override
-    public void executerEffetDebutTour(Object cible) {}
+    public final void executerEffetDebutTour() {}
 
     @Override
-    public void executerEffetDisparition(Object cible) {}
+    public final void executerEffetDisparition(Object cible) {}
 
     @Override
-    public void executerEffetFinTour(Object cible) {}
+    public final void executerEffetFinTour() {}
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jeu.database;
 
 import java.util.ArrayList;
@@ -42,7 +37,7 @@ public class Deck {
         deck.add(new Sort("Eclair de givre"         , 2 , joueur, new AttaqueCiblee("Attaque du givre", "Inflige 5 points de dégats au héros adverse", 5)));
         deck.add(new Sort("Explosion Pyrotechnique" , 10, joueur, new AttaqueCiblee("Explosion pyrotechnique", "Inflige 10 points de dégat à une cible", 10)));
         deck.add(new Sort("Intelligence des arcanes", 2 , joueur, new Pioche(2)));
-        deck.add(new Sort("Image miroir"            , 1 , joueur, new Cap_ImageMiroir(joueur)));
+        deck.add(new Sort("Image miroir"            , 1 , joueur, new Invocation("Image miroir", "Invoque 2 serviteurs 0/2 avec Provocation", new Serviteur("Image Rémanente", 1, joueur, new Provocation(), 0, 2), 2)));
         return deck;
     }
     

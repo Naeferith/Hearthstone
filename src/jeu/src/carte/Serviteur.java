@@ -36,13 +36,13 @@ public final class Serviteur extends Carte {
     public void executerEffetDebutMiseEnJeu(Object cible) {}
 
     @Override
-    public void executerEffetDebutTour(Object cible) {}
+    public void executerEffetDebutTour() {}
 
     @Override
     public void executerEffetDisparition(Object cible) {}
 
     @Override
-    public void executerEffetFinTour(Object cible) {}    
+    public void executerEffetFinTour() {}    
     
     public void setAtk(int atk) {
         this.atk = atk;

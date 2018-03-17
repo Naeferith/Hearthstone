@@ -1,4 +1,7 @@
 package jeu.src;
+
+import jeu.src.exception.HearthstoneException;
+
 /**
  *
  * @author bagnato2u
@@ -7,9 +10,9 @@ public interface ICapacite {
     //On suppose le cout du pouvoir héroique fixe à 2 mana
     static final int COUT_POUVOIR = 2;
     
-    public abstract void executerAction(Object cible);
+    public abstract void executerAction(Object cible) throws HearthstoneException;
     public abstract void executerEffetDebutTour();
-    public abstract void executerEffetDisparition(Object cible);
+    public abstract void executerEffetDisparition(Object cible) throws HearthstoneException;
     public abstract void executerEffetFinTour();
     public abstract void executerEffetMiseEnJeu(Object cible);
     public abstract String getDescription();

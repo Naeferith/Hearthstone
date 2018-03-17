@@ -1,6 +1,7 @@
 package jeu.src;
 
 import java.util.ArrayList;
+import jeu.src.exception.HearthstoneException;
 
 /**
  *
@@ -24,8 +25,8 @@ public interface IJoueur {
     public abstract void jouerCarte(ICarte carte);
     public abstract void jouerCarte(ICarte carte, Object cible);
     public abstract void perdreCarte(ICarte carte);
-    public abstract void piocher();
-    public abstract void prendreTour();
+    public abstract void piocher() throws HearthstoneException;
+    public abstract void prendreTour() throws HearthstoneException;
     public abstract void utiliserCarte(ICarte carte, Object cible);
-    public abstract void utiliserPouvoir(Object cible);
+    public abstract void utiliserPouvoir(Object cible) throws HearthstoneException;
 }

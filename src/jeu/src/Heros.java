@@ -2,6 +2,7 @@ package jeu.src;
 
 import java.util.ArrayList;
 import jeu.src.capacite.*;
+import jeu.src.exception.HearthstoneException;
 
 
 /**
@@ -48,7 +49,7 @@ public class Heros {
         return pouvoir;
     }
 
-    public void setPv(int pv) {
+    public void setPv(int pv) throws HearthstoneException {
         this.pv = pv;
         
         if (this.getPv() < 0) {
@@ -58,11 +59,10 @@ public class Heros {
     }
     
     //Séléction du héros par nom
-    public static Heros getHeros(String str) {
+    public static Heros getHeros(String str) throws HearthstoneException {
         for (Heros heros : HEROS) {
             if (heros.getNom().contains(str)) return new Heros(heros);
         }
-        //Exception
-        return null;
+        throw new HearthstoneException("Heros non trouvé.");
     }
 }

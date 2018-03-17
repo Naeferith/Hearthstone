@@ -73,7 +73,12 @@ public class Main {
                         System.out.println("C'est quoi ton petit nom de tapète :");
                         pseudo = scanIn.nextLine();
                         System.out.println("Et quel héros devra te subir pendant une partie :");
-                        heros = Heros.getHeros(scanIn.nextLine());
+                        try {
+                            heros = Heros.getHeros(scanIn.nextLine());
+                        }
+                        catch (HearthstoneException e) {
+                            System.out.println("Erreur : " + e);
+                        }
                     }
                     while("".equals(pseudo) || heros == null);
                     try {
