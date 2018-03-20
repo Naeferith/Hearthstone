@@ -181,7 +181,7 @@ public class Joueur implements IJoueur {
 
     @Override
     public void utiliserPouvoir(Object cible) throws HearthstoneException {
-        if (this.getStockMana() < COUT_POUVOIR) this.heros.getPouvoir().executerAction(cible);
+        if (this.getStockMana() < COUT_POUVOIR) this.getHeros().getPouvoir().executerAction(cible);
         else throw new HearthstoneException("Mana insuffisant.");
     }
 }
