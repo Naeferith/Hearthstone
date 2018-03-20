@@ -2,7 +2,6 @@ package jeu.src.carte;
 
 import jeu.src.ICapacite;
 import jeu.src.ICarte;
-import jeu.src.capacite.Capacite;
 import jeu.src.IJoueur;
 
 /**

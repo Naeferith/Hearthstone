@@ -47,6 +47,7 @@ public class Plateau implements IPlateau {
 
     @Override
     public final void finTour(IJoueur joueur) throws HearthstoneException {
+        this.getJoueurCourant().finirTour();                //Fin de tour du joueur
         this.setJoueurCourant(this.getAdversaire(joueur));  //Changement de joueur courant
         this.getJoueurCourant().prendreTour();              //Le nouveau joueur prend la main
     }
