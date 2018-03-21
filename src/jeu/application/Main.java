@@ -1,6 +1,7 @@
 package jeu.application;
 
 import java.util.Scanner;
+import jeu.application.console.ouput.Output;
 import jeu.src.Heros;
 import jeu.src.IPlateau;
 import jeu.src.Joueur;
@@ -56,6 +57,7 @@ public class Main {
                 case "1":
                     try {
                         plateau.demarrerPartie();
+                        StartGame();
                     }
                     catch (HearthstoneException e){
                         System.out.println("Erreur : " + e.getMessage());
@@ -82,7 +84,7 @@ public class Main {
                     catch(HearthstoneException e) {
                         System.out.println("Erreur : " + e.getMessage());
                     }
-                    //System.out.println("[DEBUG] Player " + pseudo + " (" + heros.getNom() + ") added to the game.");
+                    System.out.println("[DEBUG] Player " + pseudo + " (" + heros.getNom() + ") added to the game.");
                     }
                     break;
                 default:
@@ -92,7 +94,43 @@ public class Main {
                     break;
             }
         }
+    }
+    
+    private static void StartGame() throws HearthstoneException {
+        String input;
+        Scanner scanIn = new Scanner(System.in);
         
+        IPlateau plateau = Plateau.getPlateau();
+        Output.printNewGameSummary();
         
+        while (true) {
+            System.out.println("--------------------------------------------");
+            Output.printOpponentStat();
+            Output.printPlayerStat();
+            System.out.println("--------------------------------------------");
+            System.out.println("Tour de " + plateau.getJoueurCourant().getPseudo());
+            System.out.println("--------------------------------------------");
+            Output.printMenuAction();
+            input = scanIn.nextLine();
+            
+            switch (input) {
+                case "1":
+                    Output.printHand();
+                    break;
+                case "2":
+                    Output.printBoard();
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    break;
+                case "0":
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

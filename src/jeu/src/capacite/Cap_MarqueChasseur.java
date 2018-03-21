@@ -1,6 +1,7 @@
 package jeu.src.capacite;
 
 import jeu.src.carte.Serviteur;
+import jeu.src.exception.HearthstoneException;
 /**
  *
  * @author bagnato2u
@@ -12,7 +13,7 @@ public final class Cap_MarqueChasseur extends AttaqueCiblee {
     }
 
     @Override
-    public void executerEffetMiseEnJeu(Object cible) {
+    public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
         super.executerEffetMiseEnJeu(cible);
         
         if (cible instanceof Serviteur) {

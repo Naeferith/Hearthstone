@@ -10,7 +10,7 @@ import jeu.src.exception.HearthstoneException;
  * @author bagnato2u
  */
 public class Heros {
-    private static final int BASE_HP = 15; //Valeur initiale des points de vie au début d'un match'
+    private static final int BASE_HP = 15; //Valeur initiale des points de vie au début d'un match
     
     //Les héros sont définis et donc ne peuvent pas etre créée par l'utilisateur
     private static final ArrayList<Heros> HEROS = new ArrayList<Heros>();

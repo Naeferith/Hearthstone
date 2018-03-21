@@ -1,5 +1,7 @@
 package jeu.src.capacite;
 
+import jeu.src.exception.HearthstoneException;
+
 /**Capacité à appliquer un effet (serviteur seulement) et/ou infliger des dégats une cible quelconque
  *
  * @author bagnato2u
@@ -31,7 +33,7 @@ public class AttaqueCiblee extends Attaque {
     }
 
     @Override
-    public void executerEffetMiseEnJeu(Object cible) {
+    public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

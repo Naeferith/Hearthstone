@@ -56,7 +56,7 @@ public final class Serviteur extends Carte {
     }
 
     @Override
-    public final void executerEffetDebutMiseEnJeu(Object cible) {
+    public final void executerEffetDebutMiseEnJeu(Object cible) throws HearthstoneException {
         //On initialise les coups
         //Comme furie des vents n'est pas implémenté, on supose qu'un serviteur n'attaque qu'une fois par tour
         this.nbCoup = 1;
@@ -85,8 +85,9 @@ public final class Serviteur extends Carte {
         this.atk = atk;
     }
 
-    public void setPv(int pv) {
-        this.pv  = pv;
+    public void setPv(int pv) throws HearthstoneException {
+        this.pv = pv;
+        if (this.disparait()) this.getProprietaire().perdreCarte(this);
     }
 
     public int getAtk() {

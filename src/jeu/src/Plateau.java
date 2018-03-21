@@ -32,12 +32,23 @@ public class Plateau implements IPlateau {
     public final void demarrerPartie() throws HearthstoneException {
         if (this.estDemaree()) throw new HearthstoneException("La partie est déja en cours.");
         if (this.joueurs.size() != 2) throw new HearthstoneException("2 joueurs sont requis pour commencer une partie.");
+        this.enCours = true;
         
         //Détermination du 1er joueur
         Random rand = new Random();
         int i = rand.nextInt(2);
         this.setJoueurCourant(this.joueurs.get(i));
-        this.estDemaree();
+        
+        //Mise en place des decks
+        plateau.getJoueurCourant().setDeck();
+        plateau.getAdversaire(plateau.getJoueurCourant()).setDeck();
+        
+        //Mise en place de la main de départ (pas de redraw pour le moment)
+        for(int j = 0; j < 3; j++) {
+            plateau.getJoueurCourant().piocher();
+            plateau.getAdversaire(plateau.getJoueurCourant()).piocher();
+        }
+        
         this.getJoueurCourant().prendreTour(); //Le joueur prend la main
     }
 

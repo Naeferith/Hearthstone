@@ -4,6 +4,7 @@ import static jeu.src.ICapacite.COUT_POUVOIR;
 import jeu.src.carte.Serviteur;
 import java.util.ArrayList;
 import java.util.Random;
+import jeu.database.Deck;
 import jeu.src.exception.HearthstoneException;
 
 /**
@@ -117,14 +118,14 @@ public class Joueur implements IJoueur {
     public void perdreCarte(ICarte carte) throws HearthstoneException {
         //Par défaut, la cible d'une disparition de serviteur est le héros adverse
         carte.executerEffetDisparition(Plateau.getPlateau().getAdversaire(carte.getProprietaire()).getHeros());
-        
+        this.getJeu().remove(carte);
     }
 
     @Override
     public void piocher() throws HearthstoneException {
         //Fatigue
         if (this.getDeck().isEmpty()) {
-            this.getHeros().setPv( this.getHeros().getPv() - this.fatigue);
+            this.getHeros().setPv(this.getHeros().getPv() - this.fatigue);
             
             //La fatigue frappera plus fort au tour suivant
             this.setFatigue(this.fatigue + 1);
@@ -163,6 +164,22 @@ public class Joueur implements IJoueur {
         
         //On réactive le pouvoir héroique
         this.getHeros().getPouvoir().setUse(false);
+    }
+    
+    @Override
+    public void setDeck() {
+        this.deck.addAll(Deck.getDeckCommun(this));
+        switch (this.getHeros().getNom()) {
+            case "Jaina":
+                this.deck.addAll(Deck.getDeckJaina(this));
+                break;
+            case "Rexxar":
+                this.deck.addAll(Deck.getDeckRexxar(this));
+                break;
+            default:
+                //throw ?
+                break;
+        }
     }
 
     public void setCurrentMana(int currentMana) {
