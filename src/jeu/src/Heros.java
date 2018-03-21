@@ -14,13 +14,11 @@ public class Heros {
     
     //Les héros sont définis et donc ne peuvent pas etre créée par l'utilisateur
     private static final ArrayList<Heros> HEROS = new ArrayList<Heros>();
-    
     static {
         HEROS.add(new Heros("Jaina", new AttaqueCiblee("Boule de feu", "Inflige 1 point de dégat à une cible.", 1)));
         HEROS.add(new Heros("Rexxar", new AttaqueHeros("Tir Assuré", "Inflige 2 points de dégat au héros adverse.", 2)));
     };
-    
-    
+
     private String nom;
     private int pv;
     private ICapacite pouvoir;
@@ -50,9 +48,10 @@ public class Heros {
     }
 
     public void setPv(int pv) throws HearthstoneException {
-        this.pv = pv;
+        //Si on applique un soin, on ne peut pas depasser les pv max du heros
+        this.pv = (pv > BASE_HP) ? BASE_HP: pv;
         
-        if (this.getPv() < 0) {
+        if (this.pv < 0) {
             IPlateau plateau = Plateau.getPlateau();
             plateau.gagnePartie(plateau.getAdversaire(plateau.getJoueurCourant()));
         }

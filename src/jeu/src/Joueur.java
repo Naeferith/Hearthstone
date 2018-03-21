@@ -37,7 +37,7 @@ public class Joueur implements IJoueur {
     @Override
     public void finirTour() {
         //On vérifie les effets de fin de tour des serviteurs aliés
-        for (ICarte carte : this.getJeu()) carte.getCapacite().executerEffetDebutTour();
+        for (ICarte carte : this.getJeu()) carte.executerEffetFinTour();
     }
 
     @Override
@@ -91,25 +91,21 @@ public class Joueur implements IJoueur {
     }
 
     @Override
-    public void jouerCarte(ICarte carte) {
+    public void jouerCarte(ICarte carte) throws HearthstoneException {
         //Ai-je le mana suffisant ?
         if (this.getStockMana() >= carte.getCout()) {
             
             if (carte instanceof Serviteur) {
-                if (this.getJeu().size() < TAILLE_BOARD) {
-                    this.setCurrentMana(this.getStockMana() - carte.getCout()); //On soustrait le cout de la carte
-                    this.getMain().remove(carte);                               //On enlève la carte de la main
-                    this.getJeu().add(carte);                                   //On ajoute la carte au plateau
-                }
-                else {
-                    //throw
-                }
+                if (this.getJeu().size() >= TAILLE_BOARD) throw new HearthstoneException("Plateau plein. Impossible de placer de nouveaux serviteurs.");
+                this.getMain().remove(carte);                               //On enlève la carte de la main
+                this.getJeu().add(carte);                                   //On ajoute la carte au plateau
             }
             else {
-                this.setCurrentMana(this.getStockMana() - carte.getCout());
                 
             }
+            this.setCurrentMana(this.getStockMana() - carte.getCout()); //On soustrait le cout de la carte
         }
+        else throw new HearthstoneException("Mana insuffisant.");
     }
 
     @Override
@@ -118,17 +114,20 @@ public class Joueur implements IJoueur {
     }
 
     @Override
-    public void perdreCarte(ICarte carte) {
+    public void perdreCarte(ICarte carte) throws HearthstoneException {
+        //Au moment de retirer une carte
+        carte.executerEffetDisparition(null); //Maybe remove param
+        
     }
 
     @Override
     public void piocher() throws HearthstoneException {
         //Fatigue
         if (this.getDeck().isEmpty()) {
-            this.getHeros().setPv(this.getHeros().getPv() - this.fatigue);
+            this.getHeros().setPv( this.getHeros().getPv() - this.fatigue);
             
             //La fatigue frappera plus fort au tour suivant
-            this.setFatigue(fatigue + 1);
+            this.setFatigue(this.fatigue + 1);
         }
         else {
             //Piochage aléatoire -> la carte quitte le deck dans tout les cas
@@ -159,8 +158,8 @@ public class Joueur implements IJoueur {
         //On pioche
         this.piocher();
         
-        //On vérifie les effets de début de tour des serviteurs aliés
-        for (ICarte carte : this.getJeu()) carte.getCapacite().executerEffetDebutTour();
+        //On vérifie les effets de début de tour des serviteurs aliés et on leur permet de réattaquer
+        for (ICarte carte : this.getJeu()) carte.executerEffetDebutTour();
         
         //On réactive le pouvoir héroique
         this.getHeros().getPouvoir().setUse(false);

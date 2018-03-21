@@ -19,7 +19,7 @@ public final class Sort extends Carte {
     @Override
     public final boolean disparait() {
         //un sort disparait toujours après utilisation
-        return false;
+        return true;
     }
 
     @Override

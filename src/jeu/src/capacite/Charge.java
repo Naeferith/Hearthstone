@@ -25,7 +25,7 @@ public class Charge extends Capacite {
     @Override
     public void executerEffetMiseEnJeu(Object cible) {
         //Un serviteur posé avec charge peut ne pas attaquer.
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

@@ -22,9 +22,9 @@ public interface IJoueur {
     public abstract int getMana();
     public abstract String getPseudo();
     public abstract int getStockMana();
-    public abstract void jouerCarte(ICarte carte);
-    public abstract void jouerCarte(ICarte carte, Object cible);
-    public abstract void perdreCarte(ICarte carte);
+    public abstract void jouerCarte(ICarte carte) throws HearthstoneException;
+    public abstract void jouerCarte(ICarte carte, Object cible) throws HearthstoneException;
+    public abstract void perdreCarte(ICarte carte) throws HearthstoneException;
     public abstract void piocher() throws HearthstoneException;
     public abstract void prendreTour() throws HearthstoneException;
     public abstract void utiliserCarte(ICarte carte, Object cible);

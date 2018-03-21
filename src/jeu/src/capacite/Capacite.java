@@ -40,19 +40,4 @@ public abstract class Capacite implements ICapacite {
     public String toString() {
         return "Capacite " +  nom + " : " + description + '.';
     }
-    
-    //usable ?
-    public enum Effect {
-        Charge,                     //Charge
-        Provocation,                //Taunt
-        Attaque_du_heros,           //Ignore Taunt mobs
-        Attaque_ciblee,             //Basic atk movement (may be always)
-        Attaque_totale,             //Full board atk
-        Effet_permanent,            //Permanent buff [deltaATK:deltaPV]
-        Pioche,                     //Draw x cards [x]
-        Invocation_de_serviteurs,   //Summon x mobs [x:nom:ATK:PV]
-        Invocation_de_chiens,       //Spell [Lacher les chiens]
-        Image_Miroir,               //Spell [Image mirroir]
-        Marque_du_chasseur          //Spell [Marque du chasseur]
-    }
 }

@@ -2,6 +2,7 @@ package jeu.src;
 
 import java.util.ArrayList;
 import java.util.Random;
+import jeu.src.capacite.Provocation;
 import jeu.src.exception.HearthstoneException;
 
 /**
@@ -58,6 +59,7 @@ public class Plateau implements IPlateau {
         
         //Fin de partie
         this.enCours = false;
+        
         //Reinitialisation du plateau
         plateau = null;
     }
@@ -76,6 +78,14 @@ public class Plateau implements IPlateau {
     @Override
     public final void setJoueurCourant(IJoueur joueur) {
         this.joueurCourant = joueur;
+    }
+    
+    //Renvoie true si le plateau du joueur contient un serviteur avec provocation
+    public boolean isProvocation(IJoueur joueur) {
+        for (ICarte carte : joueur.getJeu()) {
+            if (carte.getCapacite() instanceof Provocation) return true;
+        }
+        return false;
     }
     
 }

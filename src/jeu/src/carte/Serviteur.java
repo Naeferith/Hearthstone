@@ -1,7 +1,13 @@
 package jeu.src.carte;
 
+import jeu.src.Heros;
 import jeu.src.ICapacite;
 import jeu.src.IJoueur;
+import jeu.src.IPlateau;
+import jeu.src.Plateau;
+import jeu.src.capacite.Charge;
+import jeu.src.capacite.Provocation;
+import jeu.src.exception.HearthstoneException;
 
 /**
  *
@@ -10,6 +16,8 @@ import jeu.src.IJoueur;
 public final class Serviteur extends Carte {
     private int atk;
     private int pv;
+    private int nbCoup;         //Le nombre d'attaque du serviteur (e.g. furie des vents = 2)
+    private int nbCoupStock;    //Le nombre d'attaque restant pour ce tour
 
     public Serviteur(String nom, int mana, IJoueur joueur, ICapacite capacite, int atk, int pv) {
         super(nom, mana, joueur, capacite);
@@ -25,31 +33,61 @@ public final class Serviteur extends Carte {
     
     @Override
     public boolean disparait() {
-        //TODO : Reel calcul du resultat
-        return true;
+        return this.pv <= 0;
     }
 
     @Override
-    public void executerAction(Object cible) {}
+    public void executerAction(Object cible) throws HearthstoneException {
+        //Quand un serviteur attaque
+        if (cible == null) throw new HearthstoneException("La cible ne peut pas etre nulle.");
+        
+        Plateau plateau = (Plateau) Plateau.getPlateau();
+        IJoueur adv = plateau.getAdversaire(plateau.getJoueurCourant());
+        
+        //Si la cible est un heros, il ne doit pas y avoir de serviteurs sur le terrain
+        if (cible instanceof Heros) {
+            if (plateau.isProvocation(adv)) throw new HearthstoneException("Il faut d'abbord éliminer les serviteurs avec provocation.");
+            else ((Heros) cible).setPv( ((Heros) cible).getPv() - this.atk);
+        }
+        //Si la cible est un serviteur, il doit avoir Provocation en priorité
+        else {
+            if (!(((Serviteur) cible).getCapacite() instanceof Provocation)) ((Serviteur) cible).setPv( ((Serviteur) cible).getPv() - this.atk);
+            else throw new HearthstoneException("Il faut d'abbord éliminer les serviteurs avec provocation.");
+        }
+    }
 
     @Override
-    public void executerEffetDebutMiseEnJeu(Object cible) {}
+    public void executerEffetDebutMiseEnJeu(Object cible) {
+        //On initialise les coups
+        //Comme furie des vents n'est pas implémenté, on supose qu'un serviteur n'attaque qu'une fois par tour
+        this.nbCoup = 1;
+        this.nbCoupStock = (this.getCapacite() instanceof Charge) ? 1 : 0;
+        this.getCapacite().executerEffetMiseEnJeu(cible);
+    }
 
     @Override
-    public void executerEffetDebutTour() {}
+    public void executerEffetDebutTour() {
+        //On reinitialise les coups
+        this.nbCoupStock = this.nbCoup;
+        this.getCapacite().executerEffetDebutTour();
+    }
 
     @Override
-    public void executerEffetDisparition(Object cible) {}
+    public void executerEffetDisparition(Object cible) throws HearthstoneException {
+        this.getCapacite().executerEffetDisparition(cible);
+    }
 
     @Override
-    public void executerEffetFinTour() {}    
+    public void executerEffetFinTour() {
+        this.getCapacite().executerEffetFinTour();
+    }    
     
     public void setAtk(int atk) {
         this.atk = atk;
     }
 
     public void setPv(int pv) {
-        this.pv = pv;
+        this.pv  = pv;
     }
 
     public int getAtk() {

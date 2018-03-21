@@ -14,6 +14,7 @@ public class Cap_Lepreux extends AttaqueHeros {
 
     @Override
     public void executerEffetDisparition(Object cible) throws HearthstoneException {
+        //La cible est toujours la meme: le heros adversaire DU PROPRIETAIRE de la carte
         super.executerAction(cible);
     }
 }
