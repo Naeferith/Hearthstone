@@ -115,8 +115,8 @@ public class Joueur implements IJoueur {
 
     @Override
     public void perdreCarte(ICarte carte) throws HearthstoneException {
-        //Au moment de retirer une carte
-        carte.executerEffetDisparition(null); //Maybe remove param
+        //Par défaut, la cible d'une disparition de serviteur est le héros adverse
+        carte.executerEffetDisparition(Plateau.getPlateau().getAdversaire(carte.getProprietaire()).getHeros());
         
     }
 

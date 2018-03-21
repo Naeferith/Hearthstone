@@ -3,7 +3,6 @@ package jeu.src.carte;
 import jeu.src.Heros;
 import jeu.src.ICapacite;
 import jeu.src.IJoueur;
-import jeu.src.IPlateau;
 import jeu.src.Plateau;
 import jeu.src.capacite.Charge;
 import jeu.src.capacite.Provocation;
@@ -32,12 +31,12 @@ public final class Serviteur extends Carte {
     }
     
     @Override
-    public boolean disparait() {
+    public final boolean disparait() {
         return this.pv <= 0;
     }
 
     @Override
-    public void executerAction(Object cible) throws HearthstoneException {
+    public final void executerAction(Object cible) throws HearthstoneException {
         //Quand un serviteur attaque
         if (cible == null) throw new HearthstoneException("La cible ne peut pas etre nulle.");
         
@@ -57,7 +56,7 @@ public final class Serviteur extends Carte {
     }
 
     @Override
-    public void executerEffetDebutMiseEnJeu(Object cible) {
+    public final void executerEffetDebutMiseEnJeu(Object cible) {
         //On initialise les coups
         //Comme furie des vents n'est pas implémenté, on supose qu'un serviteur n'attaque qu'une fois par tour
         this.nbCoup = 1;
@@ -66,19 +65,19 @@ public final class Serviteur extends Carte {
     }
 
     @Override
-    public void executerEffetDebutTour() {
+    public final void executerEffetDebutTour() {
         //On reinitialise les coups
         this.nbCoupStock = this.nbCoup;
         this.getCapacite().executerEffetDebutTour();
     }
 
     @Override
-    public void executerEffetDisparition(Object cible) throws HearthstoneException {
+    public final void executerEffetDisparition(Object cible) throws HearthstoneException {
         this.getCapacite().executerEffetDisparition(cible);
     }
 
     @Override
-    public void executerEffetFinTour() {
+    public final void executerEffetFinTour() {
         this.getCapacite().executerEffetFinTour();
     }    
     
