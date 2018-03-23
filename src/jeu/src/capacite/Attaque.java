@@ -2,7 +2,7 @@ package jeu.src.capacite;
 
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public abstract class Attaque extends Capacite {
     protected int damage;

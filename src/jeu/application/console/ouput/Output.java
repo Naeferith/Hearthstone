@@ -7,7 +7,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**
  *
- * @author Thømas
+ * @author BAGNATO Thomas
  */
 public final class Output {
     private static final IPlateau PLATEAU = Plateau.getPlateau();

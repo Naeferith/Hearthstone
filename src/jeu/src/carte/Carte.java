@@ -6,7 +6,7 @@ import jeu.src.IJoueur;
 
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public abstract class Carte implements ICarte {
     private final String nom;

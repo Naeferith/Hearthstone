@@ -2,7 +2,7 @@ package jeu.src.capacite;
 
 /**Capacité à altérer les stats des autres serviteurs alliés sur le terrain
  *
- * @author Thømas
+ * @author BAGNATO Thomas
  */
 public class EffetPermanent extends Capacite {
     private int bonusAtk;

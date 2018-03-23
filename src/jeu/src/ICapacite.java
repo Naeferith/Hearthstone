@@ -4,7 +4,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public interface ICapacite {
     //On suppose le cout du pouvoir héroique fixe à 2 mana

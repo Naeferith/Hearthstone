@@ -4,7 +4,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public interface IPlateau {
     public abstract void ajouterJoueur(IJoueur joueur) throws HearthstoneException;

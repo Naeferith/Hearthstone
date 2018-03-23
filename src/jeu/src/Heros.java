@@ -7,7 +7,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public class Heros {
     private static final int BASE_HP = 15; //Valeur initiale des points de vie au début d'un match

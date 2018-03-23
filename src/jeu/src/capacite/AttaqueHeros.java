@@ -8,7 +8,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**Capacité à attaquer un héros en ignorant tout serviteur avec provocation
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public class AttaqueHeros extends Attaque {
 

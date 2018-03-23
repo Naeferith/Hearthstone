@@ -7,7 +7,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**
  *
- * @author Thømas
+ * @author BAGNATO Thomas
  */
 public class Plateau implements IPlateau {
     private static IPlateau plateau = null; //Instance unique de plateau

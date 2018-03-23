@@ -4,7 +4,7 @@ import jeu.src.carte.Serviteur;
 import jeu.src.exception.HearthstoneException;
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public final class Cap_MarqueChasseur extends AttaqueCiblee {
 

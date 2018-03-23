@@ -4,7 +4,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**Capacité à appliquer un effet (serviteur seulement) et/ou infliger des dégats une cible quelconque
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public class AttaqueCiblee extends Attaque {
 

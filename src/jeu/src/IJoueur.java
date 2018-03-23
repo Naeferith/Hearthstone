@@ -5,7 +5,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public interface IJoueur {
     static final int MAX_MANA = 10;

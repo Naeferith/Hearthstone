@@ -2,7 +2,7 @@ package jeu.src.capacite;
 
 /**Capacité à obliger les serviteurs adverses à attaquer un serviteur avec Provocation avant toute autre cible
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public final class Provocation extends Capacite {
 

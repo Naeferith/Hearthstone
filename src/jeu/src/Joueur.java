@@ -9,7 +9,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public class Joueur implements IJoueur {
     private final String pseudo;

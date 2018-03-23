@@ -4,7 +4,7 @@ import jeu.src.ICapacite;
 
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public abstract class Capacite implements ICapacite {
     private String nom;

@@ -9,7 +9,7 @@ import jeu.src.carte.Serviteur;
 
 /**Capacité à invoquer un ou plusieurs serviteurs identiques
  * 
- * @author Thømas
+ * @author BAGNATO Thomas
  */
 public class Invocation extends Capacite {
     private ICarte nouveauServiteur;

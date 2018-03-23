@@ -4,7 +4,7 @@ import jeu.src.exception.HearthstoneException;
 
 /**
  *
- * @author Thømas
+ * @author BAGNATO Thomas
  */
 public class Cap_Lepreux extends AttaqueHeros {
     

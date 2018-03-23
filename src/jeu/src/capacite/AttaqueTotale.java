@@ -2,7 +2,7 @@ package jeu.src.capacite;
 
 /**Capacité à appliquer un effet et/ou infliger des dégats au board adverse
  *
- * @author Thømas
+ * @author BAGNATO Thomas
  */
 public class AttaqueTotale extends Attaque {
 

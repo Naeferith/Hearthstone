@@ -2,7 +2,7 @@ package jeu.src.capacite;
 
 /**Permet au serviteur d'attaquer au moment de sa pose
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public class Charge extends Capacite {
 

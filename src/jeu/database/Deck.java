@@ -9,7 +9,7 @@ import jeu.src.carte.Sort;
 
 /**
  *
- * @author Thømas
+ * @author BAGNATO Thomas
  */
 public class Deck {
     //On admet, un deck = 10 cartes communes + 5 cartes de classe

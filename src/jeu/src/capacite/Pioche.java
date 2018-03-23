@@ -2,7 +2,7 @@ package jeu.src.capacite;
 
 /**Capacité à piocher un nombre défini de cartes
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public final class Pioche extends Capacite {
     private int quantite;

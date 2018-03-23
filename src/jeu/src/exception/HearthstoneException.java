@@ -2,7 +2,7 @@ package jeu.src.exception;
 
 /**
  *
- * @author bagnato2u
+ * @author BAGNATO Thomas
  */
 public class HearthstoneException extends Exception {
 
