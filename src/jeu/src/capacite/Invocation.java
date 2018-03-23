@@ -6,6 +6,7 @@ import jeu.src.IJoueur;
 import jeu.src.IPlateau;
 import jeu.src.Plateau;
 import jeu.src.carte.Serviteur;
+import jeu.src.exception.HearthstoneException;
 
 /**Capacité à invoquer un ou plusieurs serviteurs identiques
  * 
@@ -13,7 +14,7 @@ import jeu.src.carte.Serviteur;
  */
 public class Invocation extends Capacite {
     private final ICarte nouveauServiteur;
-    private final int effectif; 
+    protected int effectif; 
     
     public Invocation(String nom, String description, ICarte serviteur, int effectif) {
         super(nom, description);
@@ -48,7 +49,7 @@ public class Invocation extends Capacite {
     public void executerEffetFinTour() {}
 
     @Override
-    public void executerEffetMiseEnJeu(Object cible) {
+    public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
         this.executerAction(cible);
     }
     
