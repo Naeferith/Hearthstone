@@ -1,5 +1,7 @@
 package jeu.src.capacite;
 
+import jeu.src.Heros;
+import jeu.src.carte.Serviteur;
 import jeu.src.exception.HearthstoneException;
 
 /**Capacité à appliquer un effet (serviteur seulement) et/ou infliger des dégats une cible quelconque
@@ -13,28 +15,24 @@ public class AttaqueCiblee extends Attaque {
     }
 
     @Override
-    public void executerAction(Object cible) {
-        //if (cible == null) 
+    public void executerAction(Object cible) throws HearthstoneException {
+        if (cible == null) throw new HearthstoneException("Cible non trouvée.");
+        if (cible instanceof Heros) ((Heros) cible).setPv(((Heros) cible).getPv() - damage);
+        else ((Serviteur) cible).setPv(((Serviteur) cible).getPv() - damage);
     }
 
     @Override
-    public void executerEffetDebutTour() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void executerEffetDebutTour() {}
 
     @Override
-    public void executerEffetDisparition(Object cible) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void executerEffetDisparition(Object cible) {}
 
     @Override
-    public void executerEffetFinTour() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void executerEffetFinTour() {}
 
     @Override
     public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.executerAction(cible);
     }
     
 }

@@ -3,6 +3,7 @@ package jeu.src.carte;
 import jeu.src.Heros;
 import jeu.src.ICapacite;
 import jeu.src.IJoueur;
+import jeu.src.Joueur;
 import jeu.src.Plateau;
 import jeu.src.capacite.Charge;
 import jeu.src.capacite.Provocation;
@@ -15,19 +16,21 @@ import jeu.src.exception.HearthstoneException;
 public final class Serviteur extends Carte {
     private int atk;
     private int pv;
+    private final int baseHp;   //Les pv originaux du serviteur
     private int nbCoup;         //Le nombre d'attaque du serviteur (e.g. furie des vents = 2)
     private int nbCoupStock;    //Le nombre d'attaque restant pour ce tour
 
     public Serviteur(String nom, int mana, IJoueur joueur, ICapacite capacite, int atk, int pv) {
         super(nom, mana, joueur, capacite);
         this.atk = atk;
-        this.pv = pv;
+        this.pv = this.baseHp = pv;
     }
     
     public Serviteur(Serviteur s) {
         super(s.getNom(), s.getCout(), s.getProprietaire(), s.getCapacite());
         this.atk = s.getAtk();
         this.pv  = s.getPv();
+        this.baseHp = s.baseHp;
     }
     
     @Override
@@ -45,7 +48,7 @@ public final class Serviteur extends Carte {
         
         //Si la cible est un heros, il ne doit pas y avoir de serviteurs sur le terrain
         if (cible instanceof Heros) {
-            if (plateau.isProvocation(adv)) throw new HearthstoneException("Il faut d'abbord éliminer les serviteurs avec provocation.");
+            if (((Joueur) adv).isProvocation()) throw new HearthstoneException("Il faut d'abbord éliminer les serviteurs avec provocation.");
             else ((Heros) cible).setPv( ((Heros) cible).getPv() - this.atk);
         }
         //Si la cible est un serviteur, il doit avoir Provocation en priorité
@@ -79,7 +82,23 @@ public final class Serviteur extends Carte {
     @Override
     public final void executerEffetFinTour() {
         this.getCapacite().executerEffetFinTour();
-    }    
+    }
+    
+    public boolean canAttack() {
+        return this.nbCoupStock > 0;
+    }
+    
+    public int getAtk() {
+        return atk;
+    }
+
+    public int getPv() {
+        return pv;
+    }
+    
+    public int getBaseHp() {
+        return baseHp;
+    }
     
     public void setAtk(int atk) {
         this.atk = atk;
@@ -89,12 +108,9 @@ public final class Serviteur extends Carte {
         this.pv = pv;
         if (this.disparait()) this.getProprietaire().perdreCarte(this);
     }
-
-    public int getAtk() {
-        return atk;
-    }
-
-    public int getPv() {
-        return pv;
+    
+    @Override
+    public String toString() {
+        return "[Serviteur] " + super.toString() + " | " + atk +  " atk / " + pv + " pv";
     }
 }

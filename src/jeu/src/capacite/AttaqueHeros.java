@@ -2,7 +2,6 @@ package jeu.src.capacite;
 
 import jeu.src.Heros;
 import jeu.src.IJoueur;
-import jeu.src.IPlateau;
 import jeu.src.Plateau;
 import jeu.src.exception.HearthstoneException;
 
@@ -21,6 +20,7 @@ public class AttaqueHeros extends Attaque {
         if (this.isUse()) throw new HearthstoneException("Pouvoir héroique déja utilisé ce tour.");
         else {
             this.setUse(true);
+            if (cible instanceof IJoueur) cible = (Heros) Plateau.getPlateau().getAdversaire((IJoueur) cible).getHeros();
             if (!(cible instanceof Heros)) throw new HearthstoneException("La cible doit être un héros.");
             //IPlateau plateau = Plateau.getPlateau();
             //IJoueur adv = plateau.getAdversaire(plateau.getJoueurCourant());
@@ -40,6 +40,8 @@ public class AttaqueHeros extends Attaque {
     public void executerEffetFinTour() {}
 
     @Override
-    public void executerEffetMiseEnJeu(Object cible) {}
+    public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
+        this.executerAction(cible);
+    }
     
 }

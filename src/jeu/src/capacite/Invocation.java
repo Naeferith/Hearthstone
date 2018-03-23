@@ -12,7 +12,7 @@ import jeu.src.carte.Serviteur;
  * @author BAGNATO Thomas
  */
 public class Invocation extends Capacite {
-    private ICarte nouveauServiteur;
+    private final ICarte nouveauServiteur;
     private final int effectif; 
     
     public Invocation(String nom, String description, ICarte serviteur, int effectif) {
@@ -29,7 +29,7 @@ public class Invocation extends Capacite {
         IJoueur cur = plateau.getJoueurCourant();
         
         //Nombre réel de serviteurs à invoquer
-        int n = (cur.getJeu().size() + effectif <= IJoueur.TAILLE_BOARD) ? cur.getJeu().size() + effectif : IJoueur.TAILLE_BOARD - cur.getJeu().size() ;
+        int n = (cur.getJeu().size() + effectif <= IJoueur.TAILLE_BOARD) ? effectif : IJoueur.TAILLE_BOARD - cur.getJeu().size() ;
         
         //Création des nouveaux serviteurs
         for (int i = 0; i < n; i++) nouveauxServiteurs.add(new Serviteur((Serviteur) this.nouveauServiteur));
@@ -48,6 +48,8 @@ public class Invocation extends Capacite {
     public void executerEffetFinTour() {}
 
     @Override
-    public void executerEffetMiseEnJeu(Object cible) {}
+    public void executerEffetMiseEnJeu(Object cible) {
+        this.executerAction(cible);
+    }
     
 }

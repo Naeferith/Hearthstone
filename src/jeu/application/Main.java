@@ -3,9 +3,12 @@ package jeu.application;
 import java.util.Scanner;
 import jeu.application.console.ouput.Output;
 import jeu.src.Heros;
+import jeu.src.ICarte;
 import jeu.src.IPlateau;
 import jeu.src.Joueur;
 import jeu.src.Plateau;
+import jeu.src.capacite.AttaqueCiblee;
+import jeu.src.carte.Serviteur;
 import jeu.src.exception.HearthstoneException;
 
 /**
@@ -18,18 +21,19 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Creation des 2 adversaires
-        //Joueur j1 = new Joueur("John Cena", Heros.getHeros("Jaina"));
-        //Joueur j2 = new Joueur("BeastMaster64", Heros.getHeros("Rexxar"));
-        
-        //Pseudo deck lul
-        //j1.getDeck().add(new Serviteur("Gay Lord", 1, j1, new Provocation(), 7, 7));
-        //j2.getDeck().add(new Serviteur("Pink Guy", 1, j2, null, 7, 7));
         
         //Etablissement du plateau
         //IPlateau plateau = Plateau.getPlateau();
-        //plateau.ajouterJoueur(j1);
+        //Creation des 2 adversaires
+        //try {
+        //    Joueur j1 = new Joueur("John Cena", Heros.getHeros("Jaina"));
+        //    Joueur j2 = new Joueur("BeastMaster64", Heros.getHeros("Rexxar"));
+        //    plateau.ajouterJoueur(j1);
         //plateau.ajouterJoueur(j2);
+        //}
+        //catch (HearthstoneException e) {
+            
+        //}
         
         //Commencer la partie
         //plateau.demarrerPartie();
@@ -47,7 +51,7 @@ public class Main {
             System.out.println("2. Ajouter un nouveau noob dans la partie");
             System.out.println("0. Je vais retourner bosser");
             System.out.println("-------------------------------------------");
-            System.out.println("Choix : ");
+            System.out.print("Choix : ");
             input = scanIn.nextLine();
             
             switch (input) {
@@ -67,9 +71,9 @@ public class Main {
                     String pseudo = "";
                     Heros heros = null;
                     do {
-                        System.out.println("C'est quoi ton petit nom de tapète :");
+                        System.out.print("Pseudo : ");
                         pseudo = scanIn.nextLine();
-                        System.out.println("Et quel héros devra te subir pendant une partie :");
+                        System.out.print("Et quel héros devra te subir pendant une partie : ");
                         try {
                             heros = Heros.getHeros(scanIn.nextLine());
                         }
@@ -84,9 +88,8 @@ public class Main {
                     catch(HearthstoneException e) {
                         System.out.println("Erreur : " + e.getMessage());
                     }
-                    System.out.println("[DEBUG] Player " + pseudo + " (" + heros.getNom() + ") added to the game.");
-                    }
                     break;
+                    }
                 default:
                     System.out.println("+-------------------------------------------------------------------+");
                     System.out.println("| Wow on atteint des niveaux de gogolisme jamais atteint auparavent |");
@@ -103,7 +106,7 @@ public class Main {
         IPlateau plateau = Plateau.getPlateau();
         Output.printNewGameSummary();
         
-        while (true) {
+        while (plateau.estDemaree()) {
             System.out.println("--------------------------------------------");
             Output.printOpponentStat();
             Output.printPlayerStat();
@@ -120,13 +123,78 @@ public class Main {
                 case "2":
                     Output.printBoard();
                     break;
-                case "3":
+                case "3": {
+                    Output.printMenuAttack();
+                    input = scanIn.nextLine();
+                    ICarte carteSelect = plateau.getJoueurCourant().getCarteEnMain(input);
+                    if (carteSelect == null) System.out.println("Carte non trouvée");
+                    else if (carteSelect.getCapacite() != null && carteSelect.getCapacite() instanceof AttaqueCiblee) {
+                        Output.printOpponentBoard();
+                        System.out.println("Choisissez votre cible (0 pour le héros adverse)");
+                        input = scanIn.nextLine();
+                        try {
+                            if ("0".equals(input)) plateau.getJoueurCourant().jouerCarte(carteSelect, plateau.getAdversaire(plateau.getJoueurCourant()).getHeros());
+                            else plateau.getJoueurCourant().jouerCarte(carteSelect, plateau.getAdversaire(plateau.getJoueurCourant()).getCarteEnJeu(input));
+                        }
+                        catch (HearthstoneException e){
+                            System.out.println("Erreur : " + e.getMessage());
+                        }
+                    }
+                    else {
+                        try {
+                            plateau.getJoueurCourant().jouerCarte(carteSelect);
+                        }
+                        catch (HearthstoneException e) {
+                            System.out.println("Erreur : " + e.getMessage());
+                        }
+                    }
                     break;
-                case "4":
+                }
+                case "4":{
+                    if (plateau.getJoueurCourant().getJeu().isEmpty()) System.out.println("Aucun servieur n'est sur le terrain.");
+                    else {
+                        Output.printCurrentBoard();
+                        System.out.println("Quel serviteur va attaquer ? :");
+                        input = scanIn.nextLine();
+                        Serviteur carteSelect = (Serviteur) plateau.getJoueurCourant().getCarteEnJeu(input);
+                        if (carteSelect == null) System.out.println("Erreur : Carte non trouvée");
+                        Output.printOpponentBoard();
+                        System.out.println("Choisissez votre cible (0 pour le héros adverse)");
+                        input = scanIn.nextLine();
+                        try {
+                            if ("0".equals(input)) plateau.getJoueurCourant().utiliserCarte(carteSelect, plateau.getAdversaire(plateau.getJoueurCourant()).getHeros());
+                            else plateau.getJoueurCourant().utiliserCarte(carteSelect, plateau.getAdversaire(plateau.getJoueurCourant()).getCarteEnJeu(input));
+                        }
+                        catch (HearthstoneException e) {
+                            System.out.println("Erreur : " + e.getMessage());
+                        }
+                    }
                     break;
+                }
                 case "5":
+                    if (plateau.getJoueurCourant().getHeros().getPouvoir() instanceof AttaqueCiblee) {
+                        Output.printOpponentBoard();
+                        System.out.println("Choisissez votre cible (0 pour le héros adverse)");
+                        input = scanIn.nextLine();
+                        try {
+                            if ("0".equals(input)) plateau.getJoueurCourant().utiliserPouvoir(plateau.getAdversaire(plateau.getJoueurCourant()).getHeros());
+                            else plateau.getJoueurCourant().utiliserPouvoir(plateau.getAdversaire(plateau.getJoueurCourant()).getCarteEnJeu(input));
+                        }
+                        catch (HearthstoneException e){
+                            System.out.println("Erreur : " + e.getMessage());
+                        }
+                    }
+                    else {
+                        try {
+                            plateau.getJoueurCourant().utiliserPouvoir(plateau.getJoueurCourant());
+                        }
+                        catch (HearthstoneException e) {
+                            System.out.println("Erreur : " + e.getMessage());
+                        }
+                    }
                     break;
                 case "0":
+                    plateau.finTour(plateau.getJoueurCourant());
                     break;
                 default:
                     break;

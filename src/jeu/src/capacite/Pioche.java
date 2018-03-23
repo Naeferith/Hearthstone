@@ -1,5 +1,8 @@
 package jeu.src.capacite;
 
+import jeu.src.IJoueur;
+import jeu.src.exception.HearthstoneException;
+
 /**Capacité à piocher un nombre défini de cartes
  *
  * @author BAGNATO Thomas
@@ -13,7 +16,9 @@ public final class Pioche extends Capacite {
     }
 
     @Override
-    public final void executerAction(Object cible) {}
+    public final void executerAction(Object cible) throws HearthstoneException {
+        for (int i = 0; i < this.quantite; i++) ((IJoueur) cible).piocher();
+    }
 
     @Override
     public final void executerEffetDebutTour() {}
@@ -25,8 +30,8 @@ public final class Pioche extends Capacite {
     public final void executerEffetFinTour() {}
 
     @Override
-    public final void executerEffetMiseEnJeu(Object cible) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public final void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
+        this.executerAction(cible);
     }
     
     

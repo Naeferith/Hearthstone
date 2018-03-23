@@ -5,6 +5,8 @@ import jeu.src.carte.Serviteur;
 import java.util.ArrayList;
 import java.util.Random;
 import jeu.database.Deck;
+import jeu.src.capacite.EffetPermanent;
+import jeu.src.capacite.Provocation;
 import jeu.src.exception.HearthstoneException;
 
 /**
@@ -91,6 +93,14 @@ public class Joueur implements IJoueur {
         return this.currentMana;
     }
 
+    //Renvoie true si le plateau du joueur contient un serviteur avec provocation
+    public boolean isProvocation() {
+        for (ICarte carte : this.getJeu()) {
+            if (carte.getCapacite() instanceof Provocation) return true;
+        }
+        return false;
+    }
+    
     @Override
     public void jouerCarte(ICarte carte) throws HearthstoneException {
         //Ai-je le mana suffisant ?
@@ -99,25 +109,57 @@ public class Joueur implements IJoueur {
             if (carte instanceof Serviteur) {
                 if (this.getJeu().size() >= TAILLE_BOARD) throw new HearthstoneException("Plateau plein. Impossible de placer de nouveaux serviteurs.");
                 this.getMain().remove(carte);                               //On enlève la carte de la main
-                this.getJeu().add(carte);                                   //On ajoute la carte au plateau
+
+                //Buff loop
+                for (ICarte serv : this.getJeu()) {
+                    if (serv.getCapacite() instanceof EffetPermanent) {
+                        ((Serviteur) carte).setAtk(((Serviteur) carte).getAtk() + ((EffetPermanent) serv.getCapacite()).getBonusAtk());
+                        ((Serviteur) carte).setPv(((Serviteur) carte).getPv() + ((EffetPermanent) serv.getCapacite()).getBonusPv());
+                    }
+                }
+                this.getJeu().add(carte); //On ajoute la carte au plateau
             }
             else {
-                
+                //sort
             }
+            carte.executerEffetDebutMiseEnJeu(carte.getProprietaire()); //Par defaut
             this.setCurrentMana(this.getStockMana() - carte.getCout()); //On soustrait le cout de la carte
+            
         }
         else throw new HearthstoneException("Mana insuffisant.");
     }
 
     @Override
-    public void jouerCarte(ICarte carte, Object cible) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void jouerCarte(ICarte carte, Object cible) throws HearthstoneException {
+        if (cible == null) throw new HearthstoneException("Cible non trouvée.");
+        if (this.getStockMana() >= carte.getCout()) {
+            
+            if (carte instanceof Serviteur) {
+                if (this.getJeu().size() >= TAILLE_BOARD) throw new HearthstoneException("Plateau plein. Impossible de placer de nouveaux serviteurs.");
+                this.getMain().remove(carte);                               //On enlève la carte de la main
+                
+                //Buff loop
+                for (ICarte serv : this.getJeu()) {
+                    if (serv.getCapacite() instanceof EffetPermanent) {
+                        ((Serviteur) carte).setAtk(((Serviteur) carte).getAtk() + ((EffetPermanent) serv.getCapacite()).getBonusAtk());
+                        ((Serviteur) carte).setPv(((Serviteur) carte).getPv() + ((EffetPermanent) serv.getCapacite()).getBonusPv());
+                    }
+                }
+                this.getJeu().add(carte); //On ajoute la carte au plateau
+            }
+            else {
+                //sort
+            }
+            this.setCurrentMana(this.getStockMana() - carte.getCout()); //On soustrait le cout de la carte
+            carte.executerEffetDebutMiseEnJeu(cible);
+        }
+        else throw new HearthstoneException("Mana insuffisant.");
     }
 
     @Override
     public void perdreCarte(ICarte carte) throws HearthstoneException {
-        //Par défaut, la cible d'une disparition de serviteur est le héros adverse
-        carte.executerEffetDisparition(Plateau.getPlateau().getAdversaire(carte.getProprietaire()).getHeros());
+        //Par défaut, la cible d'une disparition de serviteur est le propriétaire de la carte
+        carte.executerEffetDisparition(carte.getProprietaire());
         this.getJeu().remove(carte);
     }
 
@@ -191,13 +233,26 @@ public class Joueur implements IJoueur {
     }
 
     @Override
-    public void utiliserCarte(ICarte carte, Object cible) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void utiliserCarte(ICarte carte, Object cible) throws HearthstoneException {
+        //aka Attaque serviteur vers cible adverse
+        if (!((Serviteur) carte).canAttack()) throw new HearthstoneException("Le serviteur ne peut pas/plus attaquer ce tour.");
+        if (((Serviteur) carte).getAtk() == 0) throw new HearthstoneException("Votre serviteur est trop faible pour attaquer.");
+        if (cible instanceof Heros) {
+            if (((Joueur) Plateau.getPlateau().getAdversaire(carte.getProprietaire())).isProvocation()) throw new HearthstoneException("Vous devez d'abbord cibles les serviteurs avec <Provocation>.");
+            else ((Heros) cible).setPv(((Heros) cible).getPv() - ((Serviteur) carte).getAtk());
+        }
+        else {
+            if (((Joueur) Plateau.getPlateau().getAdversaire(carte.getProprietaire())).isProvocation()) {
+                if (((Serviteur) cible).getCapacite() instanceof Provocation) ((Serviteur) cible).setPv(((Serviteur) cible).getPv() - ((Serviteur) carte).getAtk());
+                else throw new HearthstoneException("Vous devez d'abbord cibles les serviteurs avec <Provocation>.");
+            }
+        }
     }
 
     @Override
     public void utiliserPouvoir(Object cible) throws HearthstoneException {
-        if (this.getStockMana() < COUT_POUVOIR) this.getHeros().getPouvoir().executerAction(cible);
-        else throw new HearthstoneException("Mana insuffisant.");
+        if (this.getStockMana() < COUT_POUVOIR) throw new HearthstoneException("Mana insuffisant.");
+        this.getHeros().getPouvoir().executerAction(cible);
+        this.setCurrentMana(this.currentMana - COUT_POUVOIR);
     }
 }

@@ -17,8 +17,8 @@ public class Deck {
     //Le deck commun
     public static ArrayList<ICarte> getDeckCommun(IJoueur joueur) {
         ArrayList<ICarte> deck = new ArrayList<>(IJoueur.TAILLE_DECK);
-        deck.add(new Sort("Charge", 1, joueur, new Charge()));
-        deck.add(new Sort("Attaque mentale", 2, joueur, new AttaqueHeros("Attaque mentale", "Inflige 5 points de dégats au héros adverse", 5)));
+        //deck.add(new Sort("Charge"                     , 1, joueur, new Cap_Charge()));
+        deck.add(new Sort("Attaque mentale"            , 2, joueur, new AttaqueHeros("Attaque mentale", "Inflige 5 points de dégats au héros adverse", 5)));
         deck.add(new Serviteur("Garde de baie-du-butin", 5, joueur, new Provocation(), 5, 4));
         deck.add(new Serviteur("Champion de Hurlevent" , 7, joueur, new EffetPermanent("Bonus de Hurlevent", "Vos autres serviteurs ont +1/+1", 1, 1), 6, 6));
         deck.add(new Serviteur("Chef de raid"          , 3, joueur, new EffetPermanent("Bonus du Chef de raid", "Vos autres serviteurs ont +1/+0", 1, 0), 2, 2));
@@ -26,7 +26,7 @@ public class Deck {
         deck.add(new Serviteur("Ogre-Magi"             , 4, joueur, new Provocation(), 4, 4));
         deck.add(new Serviteur("Archimage"             , 6, joueur, new Provocation(), 4, 7));
         deck.add(new Serviteur("Gnome Lépreux"         , 1, joueur, new Cap_Lepreux(), 1, 1));
-        //deck.add(new Serviteur("Garde de baie-du-butin", 5, joueur, new Provocation(), 5, 4));
+        deck.add(new Serviteur("Golem des moissons"    , 3, joueur, new Cap_Golemisation(joueur), 2, 3));
         return deck;
     }
     
@@ -37,7 +37,7 @@ public class Deck {
         deck.add(new Sort("Eclair de givre"         , 2 , joueur, new AttaqueCiblee("Attaque du givre", "Inflige 5 points de dégats au héros adverse", 5)));
         deck.add(new Sort("Explosion Pyrotechnique" , 10, joueur, new AttaqueCiblee("Explosion pyrotechnique", "Inflige 10 points de dégat à une cible", 10)));
         deck.add(new Sort("Intelligence des arcanes", 2 , joueur, new Pioche(2)));
-        deck.add(new Sort("Image miroir"            , 1 , joueur, new Invocation("Image miroir", "Invoque 2 serviteurs 0/2 avec Provocation", new Serviteur("Image Rémanente", 1, joueur, new Provocation(), 0, 2), 2)));
+        deck.add(new Sort("Image miroir"            , 1 , joueur, new Cap_ImageMiroir()));
         return deck;
     }
     

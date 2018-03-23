@@ -1,10 +1,15 @@
 package jeu.src.capacite;
 
+import jeu.src.ICarte;
+import jeu.src.IJoueur;
+import jeu.src.carte.Serviteur;
+import jeu.src.exception.HearthstoneException;
+
 /**Capacité à altérer les stats des autres serviteurs alliés sur le terrain
  *
  * @author BAGNATO Thomas
  */
-public class EffetPermanent extends Capacite {
+public final class EffetPermanent extends Capacite {
     private int bonusAtk;
     private int bonusPv;
 
@@ -13,31 +18,41 @@ public class EffetPermanent extends Capacite {
         this.bonusAtk = atk;
         this.bonusPv  = pv;
     }
-    
 
-    @Override
-    public void executerAction(Object cible) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getBonusAtk() {
+        return bonusAtk;
+    }
+
+    public int getBonusPv() {
+        return bonusPv;
     }
 
     @Override
-    public void executerEffetDebutTour() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public final void executerAction(Object cible) {}
+
+    @Override
+    public final void executerEffetDebutTour() {}
+
+    @Override
+    public final void executerEffetDisparition(Object cible) throws HearthstoneException {
+        for(ICarte carte : ((IJoueur) cible).getJeu()) {
+            ((Serviteur) carte).setAtk(((Serviteur) carte).getAtk() - bonusAtk);
+            if (((Serviteur) carte).getPv() - bonusPv >= ((Serviteur) carte).getBaseHp()) ((Serviteur) carte).setPv(((Serviteur) carte).getPv() - bonusPv);
+            else {
+                if (((Serviteur) carte).getPv() > ((Serviteur) carte).getBaseHp()) ((Serviteur) carte).setPv(((Serviteur) carte).getBaseHp());
+            }
+        }
     }
 
     @Override
-    public void executerEffetDisparition(Object cible) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public final void executerEffetFinTour() {}
 
     @Override
-    public void executerEffetFinTour() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void executerEffetMiseEnJeu(Object cible) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public final void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
+        for(ICarte carte : ((IJoueur) cible).getJeu()) {
+            ((Serviteur) carte).setAtk(((Serviteur) carte).getAtk() + bonusAtk);
+            ((Serviteur) carte).setPv(((Serviteur) carte).getPv() + bonusPv);
+        }
     }
     
 }

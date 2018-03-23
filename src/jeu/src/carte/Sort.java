@@ -43,4 +43,9 @@ public final class Sort extends Carte {
 
     @Override
     public final void executerEffetFinTour() {}
+    
+    @Override
+    public String toString() {
+        return "[Sort] " + super.toString();
+    }
 }

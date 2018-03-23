@@ -16,10 +16,8 @@ public final class Cap_MarqueChasseur extends AttaqueCiblee {
     public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
         super.executerEffetMiseEnJeu(cible);
         
-        if (cible instanceof Serviteur) {
-            ((Serviteur) cible).setPv(1);
-        }
-        else ; //throw wrong target
+        if (cible instanceof Serviteur) ((Serviteur) cible).setPv(1);
+        else throw new HearthstoneException("La cible doit etre un serviteur."); //throw wrong target
     }
     
 }
