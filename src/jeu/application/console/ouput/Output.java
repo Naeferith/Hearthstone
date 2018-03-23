@@ -31,7 +31,7 @@ public final class Output {
     
     public static final void printMenuAttack() {
         printHand();
-        System.out.print("Quelle carte voulez vous jouer ? :");
+        System.out.print("Quelle carte voulez vous jouer ? : ");
     }
     
     public static final void printOpponentStat() throws HearthstoneException {
@@ -58,12 +58,12 @@ public final class Output {
     public static final void printCurrentBoard() {
         System.out.println("-----------------------------------------------");
         System.out.println("Votre terrain : " + PLATEAU.getJoueurCourant().getJeu().size() + " serviteurs");
-        for (ICarte carte : PLATEAU.getJoueurCourant().getJeu()) System.out.println("> " + ((Serviteur) carte).toString() + ((((Serviteur) carte).getCapacite() instanceof Provocation) ? "| <Provocation>": ""));
+        for (ICarte carte : PLATEAU.getJoueurCourant().getJeu()) System.out.println("> " + ((Serviteur) carte).toString() + ((((Serviteur) carte).getCapacite() instanceof Provocation) ? " | <Provocation>": ""));
     }
     
     public static final void printOpponentBoard() throws HearthstoneException {
         System.out.println("-----------------------------------------------");
         System.out.println("Adversaire : " + PLATEAU.getAdversaire(PLATEAU.getJoueurCourant()).getJeu().size() + " serviteurs");
-        for (ICarte carte : PLATEAU.getAdversaire(PLATEAU.getJoueurCourant()).getJeu()) System.out.println("> " + ((Serviteur) carte).toString() + ((((Serviteur) carte).getCapacite() instanceof Provocation) ? "| <Provocation>": ""));
+        for (ICarte carte : PLATEAU.getAdversaire(PLATEAU.getJoueurCourant()).getJeu()) System.out.println("> " + ((Serviteur) carte).toString() + ((((Serviteur) carte).getCapacite() instanceof Provocation) ? " | <Provocation>": ""));
     }
 }
