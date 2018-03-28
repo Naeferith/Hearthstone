@@ -21,19 +21,19 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
         //Etablissement du plateau
-        //IPlateau plateau = Plateau.getPlateau();
+        IPlateau plateau = Plateau.getPlateau();
+        
         //Creation des 2 adversaires
-        //try {
-        //    Joueur j1 = new Joueur("John Cena", Heros.getHeros("Jaina"));
-        //    Joueur j2 = new Joueur("BeastMaster64", Heros.getHeros("Rexxar"));
-        //    plateau.ajouterJoueur(j1);
-        //plateau.ajouterJoueur(j2);
-        //}
-        //catch (HearthstoneException e) {
+        try {
+            Joueur j1 = new Joueur("John Cena", Heros.getHeros("Jaina"));
+            Joueur j2 = new Joueur("BeastMaster64", Heros.getHeros("Rexxar"));
+            plateau.ajouterJoueur(j1);
+            plateau.ajouterJoueur(j2);
+        }
+        catch (HearthstoneException e) {
             
-        //}
+        }
         
         //Commencer la partie
         //plateau.demarrerPartie();
@@ -42,7 +42,7 @@ public class Main {
         String input;
         Scanner scanIn = new Scanner(System.in);
         
-        IPlateau plateau = Plateau.getPlateau();
+        //IPlateau plateau = Plateau.getPlateau();
         
         while (true) {
             System.out.println("> Bienvenue dans Hearstone (c'est pas exactement comme Hearthstone mais on en est pas loin)");
