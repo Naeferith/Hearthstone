@@ -47,9 +47,9 @@ public class Main {
         while (true) {
             System.out.println("> Bienvenue dans Hearstone (c'est pas exactement comme Hearthstone mais on en est pas loin)");
             System.out.println("-------------------------------------------");
-            System.out.println("1. J'ai envie de casser des culs");
-            System.out.println("2. Ajouter un nouveau noob dans la partie");
-            System.out.println("0. Je vais retourner bosser");
+            System.out.println("1. Démarrer la partie");
+            System.out.println("2. Ajouter un nouveau joueur dans la partie");
+            System.out.println("0. Quitter");
             System.out.println("-------------------------------------------");
             System.out.print("Choix : ");
             input = scanIn.nextLine();
@@ -73,7 +73,7 @@ public class Main {
                     do {
                         System.out.print("Pseudo : ");
                         pseudo = scanIn.nextLine();
-                        System.out.print("Et quel héros devra te subir pendant une partie : ");
+                        System.out.print("Choix du héros : ");
                         try {
                             heros = Heros.getHeros(scanIn.nextLine());
                         }
@@ -92,7 +92,7 @@ public class Main {
                     }
                 default:
                     System.out.println("+-------------------------------------------------------------------+");
-                    System.out.println("| Wow on atteint des niveaux de gogolisme jamais atteint auparavent |");
+                    System.out.println("|                         CHOIX NON RECONNU                         |");
                     System.out.println("+-------------------------------------------------------------------+");
                     break;
             }
