@@ -51,7 +51,7 @@ public class Heros {
         //Si on applique un soin, on ne peut pas depasser les pv max du heros
         this.pv = (pv > BASE_HP) ? BASE_HP: pv;
         
-        if (this.pv < 0) {
+        if (this.pv <= 0) {
             IPlateau plateau = Plateau.getPlateau();
             plateau.gagnePartie(plateau.getAdversaire(plateau.getJoueurCourant()));
         }
