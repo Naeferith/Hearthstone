@@ -1,13 +1,13 @@
 package jeu.application.console.ouput;
 
-import jeu.src.ICarte;
+import jeu.src.carte.ICarte;
 import jeu.src.IPlateau;
 import jeu.src.Plateau;
 import jeu.src.capacite.Provocation;
 import jeu.src.carte.Serviteur;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Classe concue spécialement pour contenir les affichages sur la console.
  *
  * @author BAGNATO Thomas
  */

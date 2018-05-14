@@ -1,6 +1,6 @@
 package jeu.src.exception;
 
-/**
+/**Exception principale du jeu
  *
  * @author BAGNATO Thomas
  */

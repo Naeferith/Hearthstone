@@ -1,6 +1,6 @@
 package jeu.src.capacite;
 
-/**Permet au serviteur d'attaquer au moment de sa pose
+/**Permet au serviteur d'attaquer au moment de sa pose sur le terrain
  *
  * @author BAGNATO Thomas
  */

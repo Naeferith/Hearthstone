@@ -1,8 +1,6 @@
 package jeu.src.capacite;
 
-import jeu.src.ICapacite;
-
-/**
+/**Classe des capacités
  *
  * @author BAGNATO Thomas
  */

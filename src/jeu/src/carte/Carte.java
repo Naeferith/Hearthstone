@@ -1,10 +1,9 @@
 package jeu.src.carte;
 
-import jeu.src.ICapacite;
-import jeu.src.ICarte;
+import jeu.src.capacite.ICapacite;
 import jeu.src.IJoueur;
 
-/**
+/**Classe pour les cartes
  *
  * @author BAGNATO Thomas
  */

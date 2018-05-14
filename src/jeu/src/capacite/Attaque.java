@@ -1,6 +1,6 @@
 package jeu.src.capacite;
 
-/**
+/**Une Attaque représente toute capacité infligeant des dégats à une ou plusieures cibles.
  *
  * @author BAGNATO Thomas
  */

@@ -3,7 +3,7 @@ package jeu.src.capacite;
 import jeu.src.IJoueur;
 import jeu.src.carte.Serviteur;
 
-/**
+/**Capacité du serviteur Golem des moissons
  *
  * @author BAGNATO Thomas
  */

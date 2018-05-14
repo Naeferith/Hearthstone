@@ -3,7 +3,7 @@ package jeu.src.capacite;
 import jeu.src.Plateau;
 import jeu.src.carte.Serviteur;
 
-/**
+/**Capacité de la carte Image Miroir
  *
  * @author BAGNATO Thomas
  */

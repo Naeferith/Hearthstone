@@ -1,7 +1,6 @@
 package jeu.src.capacite;
 
-import jeu.src.Heros;
-import jeu.src.ICarte;
+import jeu.src.carte.ICarte;
 import jeu.src.IJoueur;
 import jeu.src.Plateau;
 import jeu.src.carte.Serviteur;
