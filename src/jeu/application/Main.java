@@ -1,9 +1,11 @@
 package jeu.application;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jeu.application.console.ouput.Output;
-import jeu.src.Heros;
-import jeu.src.ICarte;
+import jeu.src.heros.Heros;
+import jeu.src.carte.ICarte;
 import jeu.src.IPlateau;
 import jeu.src.Joueur;
 import jeu.src.Plateau;
@@ -76,10 +78,14 @@ public class Main {
                         System.out.print("Choix du héros : ");
                         try {
                             heros = Heros.getHeros(scanIn.nextLine());
-                        }
-                        catch (HearthstoneException e) {
+                        } catch (InstantiationException ex) {
+                            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IllegalAccessException ex) {
+                            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (HearthstoneException e) {
                             System.out.println("Erreur : " + e.getMessage());
                         }
+                        
                     }
                     while("".equals(pseudo) || heros == null);
                     try {
