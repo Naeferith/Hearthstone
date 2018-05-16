@@ -3,16 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/database/Deck.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/src/capacite/Cap_ImageMiroir.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/src/Plateau.java</file>
+            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/console/ouput/InterfaceEndTurn.java</file>
+            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/console/ouput/InterfaceAddPlayer.java</file>
+            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/console/ouput/InterfaceDisplayBoard.java</file>
             <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/console/ouput/Output.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/src/capacite/Cap_Lepreux.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/src/capacite/AttaqueHeros.java</file>
+            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/console/ouput/InterfacePlayCard.java</file>
+            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/console/ouput/InterfaceDisplayHand.java</file>
             <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/Main.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/src/capacite/Invocation.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/src/Joueur.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/src/capacite/Cap_MarqueChasseur.java</file>
+            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/console/ouput/InterfaceHeroPowerAttack.java</file>
         </group>
     </open-files>
 </project-private>
