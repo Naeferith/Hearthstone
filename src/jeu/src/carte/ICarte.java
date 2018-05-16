@@ -8,7 +8,7 @@ import jeu.src.exception.HearthstoneException;
  *
  * @author BAGNATO Thomas
  */
-public interface ICarte extends Cloneable {
+public interface ICarte {
 
     public abstract boolean disparait();
     public abstract void executerAction(Object cible) throws HearthstoneException;
