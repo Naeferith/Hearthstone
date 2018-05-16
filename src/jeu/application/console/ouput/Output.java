@@ -1,5 +1,7 @@
 package jeu.application.console.ouput;
 
+import java.util.ArrayList;
+import java.util.Scanner;
 import jeu.src.carte.ICarte;
 import jeu.src.IPlateau;
 import jeu.src.Plateau;
@@ -13,6 +15,51 @@ import jeu.src.exception.HearthstoneException;
  */
 public final class Output {
     private static final IPlateau PLATEAU = Plateau.getPlateau();
+    
+    public static DialogInterface initMainMenu() {
+        DialogInterface ihm = null;
+        
+        ihm = new InterfaceAddPlayer(ihm);
+        ihm = new InterfacePlay(ihm);
+        ihm = new InterfaceQuit(ihm);
+        
+        return ihm;
+    }
+    
+    public static DialogInterface initGameMenu() {
+        DialogInterface ihm = null;
+        
+        ihm = new InterfaceEndTurn(ihm);
+        ihm = new InterfaceHeroPowerAttack(ihm);
+        ihm = new InterfaceMobAttack(ihm);
+        ihm = new InterfacePlayCard(ihm);
+        ihm = new InterfaceDisplayBoard(ihm);
+        ihm = new InterfaceDisplayHand(ihm);
+        
+        return ihm;
+    }
+    
+    public static String printMenu(DialogInterface di) {
+        Scanner scanIn = new Scanner(System.in);
+        ArrayList<String> menu = new ArrayList<>();
+        DialogInterface localDi = di;
+        //Sauter unr ligne
+        System.out.println("");
+        while (localDi != null) {
+            menu.add(localDi.getDescription());
+            localDi = localDi.getNext();
+        }
+        
+        int n = 0;
+        if (PLATEAU.estDemaree()) System.out.println("[Tour de "+ PLATEAU.getJoueurCourant().getPseudo() + "]\n");
+        for (String s : menu) {
+            System.out.println("" + n + ". " + s);
+            n += 1;
+        }
+        
+        System.out.println("Votre choix :");
+        return menu.get(Integer.parseInt(scanIn.nextLine()));
+    }
     
     public static final void printHand() {
         System.out.println("Votre main :");
