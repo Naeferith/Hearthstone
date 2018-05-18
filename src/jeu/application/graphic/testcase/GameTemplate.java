@@ -34,9 +34,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import jeu.application.graphic.assets.HearthstoneText;
 import jeu.application.graphic.assets.PlayerField;
-import jeu.src.Heros;
+import jeu.src.heros.Heros;
 import jeu.src.Joueur;
 import jeu.src.exception.HearthstoneException;
+import jeu.src.heros.Jaina;
 
 /**
  *
@@ -66,15 +67,9 @@ public class GameTemplate extends Application {
         
         PlayerField advField = null;
         PlayerField playerField = null;
-        try {
-            advField = new PlayerField(new Joueur("SuperGay", Heros.getHeros("Jaina") ));
-            advField.setAlignment(Pos.BOTTOM_LEFT);
-            playerField = new PlayerField(new Joueur("oui", Heros.getHeros("Jaina") ));
-        }
-        catch (HearthstoneException e)  {
-            
-        }
-        
+        advField = new PlayerField(new Joueur("SuperGay", new Jaina() ));
+        advField.setAlignment(Pos.BOTTOM_LEFT);
+        playerField = new PlayerField(new Joueur("oui", new Jaina() ));
         //HBox playerField = new HBox();
         //playerField.setBackground(new Background(new BackgroundFill(Color.BLUEVIOLET, CornerRadii.EMPTY, Insets.EMPTY)));
         //playerField.setPrefHeight(WINDOW_HEIGHT/2);

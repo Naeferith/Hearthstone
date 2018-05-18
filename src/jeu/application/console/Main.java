@@ -1,4 +1,4 @@
-package jeu.application;
+package jeu.application.console;
 
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -28,33 +28,29 @@ public class Main {
      */
     public static void main(String[] args) {
         //Etablissement du plateau
-        IPlateau plateau = Plateau.getPlateau();
+        //IPlateau plateau = Plateau.getPlateau();
         
         //Creation des 2 adversaires
-        try {
-            Joueur j1 = new Joueur("John Cena", Heros.getHeros("Jaina"));
-            Joueur j2 = new Joueur("BeastMaster64", Heros.getHeros("Rexxar"));
-            plateau.ajouterJoueur(j1);
-            plateau.ajouterJoueur(j2);
-        }
-        catch (HearthstoneException e) {
+        //try {
+        //    Joueur j1 = new Joueur("John Cena", Heros.getHeros("Jaina"));
+        //    Joueur j2 = new Joueur("BeastMaster64", Heros.getHeros("Rexxar"));
+        //    plateau.ajouterJoueur(j1);
+        //    plateau.ajouterJoueur(j2);
+        //}
+        //catch (HearthstoneException e) {
             
-        }
+        //}
         
         //Commencer la partie
         //plateau.demarrerPartie();
         //----------------------------------------------------------------------------------------- ^_Static_^
         // ---------------------------------------------------------------------------------------- v_Dynamic_v
-<<<<<<< HEAD
-        String input;
-        Scanner scanIn = new Scanner(System.in);
         
         //IPlateau plateau = Plateau.getPlateau();
-=======
+
 
         //Init main menu
         DialogInterface ihm = Output.initMainMenu();
->>>>>>> Alpha
         
         while(true) {
             String choix = Output.printMenu(ihm);

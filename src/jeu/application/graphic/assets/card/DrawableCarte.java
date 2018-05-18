@@ -19,7 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
-import jeu.src.ICarte;
+import jeu.src.carte.ICarte;
 
 /**
  *

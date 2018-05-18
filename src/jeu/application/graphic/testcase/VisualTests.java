@@ -31,7 +31,7 @@ import jeu.application.graphic.assets.HearthstoneDisclaimer;
 import jeu.application.graphic.assets.card.DrawableCarte;
 import jeu.application.graphic.assets.card.DrawableServiteur;
 import jeu.application.graphic.assets.card.DrawableSort;
-import jeu.src.Heros;
+import jeu.src.heros.Heros;
 import jeu.src.IJoueur;
 import jeu.src.Joueur;
 import jeu.src.capacite.AttaqueTotale;
@@ -39,6 +39,7 @@ import jeu.src.capacite.Cap_Lepreux;
 import jeu.src.carte.Serviteur;
 import jeu.src.carte.Sort;
 import jeu.src.exception.HearthstoneException;
+import jeu.src.heros.Jaina;
 
 /**
  *
@@ -76,7 +77,7 @@ public class VisualTests extends Application {
         root.setLeft(btnList);
         
         //Elements throwing Hearthstone exeption
-        IJoueur joueur = new Joueur("LeoTheUnseen", Heros.getHeros("Jaina"));
+        IJoueur joueur = new Joueur("LeoTheUnseen", new Jaina());
         DrawableJoueur j1 = new DrawableJoueur(joueur);
         DrawableHeroPower hp1 = new DrawableHeroPower(joueur);
         

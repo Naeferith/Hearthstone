@@ -1,6 +1,6 @@
 package jeu.application.graphic.assets.card;
 
-import jeu.src.ICarte;
+import jeu.src.carte.ICarte;
 
 /**
  *
