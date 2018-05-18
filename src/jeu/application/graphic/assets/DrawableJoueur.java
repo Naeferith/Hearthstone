@@ -18,16 +18,12 @@ public class DrawableJoueur extends Parent {
         HERO_CLASS.put("Rexxar", "hero_hunter");
     }
     
-    private IJoueur joueur;
-    
     private HearthstoneText pv;
     private HearthstoneText pseudo;
     private ImageView portrait;
     private ImageView herosOverlay;
 
-    public DrawableJoueur(IJoueur joueur) {
-        this.joueur = joueur;
-        
+    public DrawableJoueur(IJoueur joueur) {        
         String classH = "hero_container";
         for(Map.Entry<String, String> entry : HERO_CLASS.entrySet()) {
             if (joueur.getHeros().getNom().equals(entry.getKey())) {

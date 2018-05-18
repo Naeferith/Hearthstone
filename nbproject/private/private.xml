@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/database/Deck.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/graphic/AnimationTimerTest.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/graphic/assets/card/DrawableSort.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/graphic/assets/HearthstoneText.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/graphic/assets/DrawablePlateau.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/graphic/testcase/VisualTests.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/graphic/assets/HearthstoneDisclaimer.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/graphic/assets/card/DrawableServiteur.java</file>
-            <file>file:/D:/WORK/JAVA%20Hearthstone/Hearthstone/src/jeu/application/graphic/assets/DrawableJoueur.java</file>
+            <file>file:/C:/Users/Thomas/Documents/GitHub/REp6GHVZDE/src/jeu/application/graphic/assets/DrawableJoueur.java</file>
+            <file>file:/C:/Users/Thomas/Documents/GitHub/REp6GHVZDE/src/jeu/database/Deck.java</file>
+            <file>file:/C:/Users/Thomas/Documents/GitHub/REp6GHVZDE/src/jeu/src/Heros.java</file>
+            <file>file:/C:/Users/Thomas/Documents/GitHub/REp6GHVZDE/src/jeu/application/graphic/assets/DrawableHeroPower.java</file>
+            <file>file:/C:/Users/Thomas/Documents/GitHub/REp6GHVZDE/src/jeu/src/Joueur.java</file>
         </group>
     </open-files>
 </project-private>

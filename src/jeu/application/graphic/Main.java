@@ -1,19 +1,27 @@
 package jeu.application.graphic;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import jeu.application.graphic.assets.DrawableJoueur;
 import jeu.application.graphic.assets.card.DrawableCarte;
 import jeu.application.graphic.assets.card.DrawableServiteur;
 import jeu.application.graphic.assets.card.DrawableSort;
-import jeu.src.Heros;
-import jeu.src.Joueur;
-import jeu.src.capacite.AttaqueTotale;
-import jeu.src.capacite.Cap_Lepreux;
-import jeu.src.carte.Serviteur;
-import jeu.src.carte.Sort;
+import static jeu.application.graphic.testcase.VisualTests.WINDOW_HEIGHT;
+import static jeu.application.graphic.testcase.VisualTests.WINDOW_WIDTH;
 import jeu.src.exception.HearthstoneException;
 
 /**
@@ -26,23 +34,43 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws HearthstoneException {
         primaryStage.setTitle("Hearthstone");               //Window title
         StackPane root = new StackPane();                   //Root group init
+        
+        
+        
+        root.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("/jeu/application/graphic/ressources/image/bg.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        //root.setStyle("-fx-background-size : 100%");
         Scene scene = new Scene(root, 1280, 720);           //Scene init
         
-        //Elements
-        DrawableServiteur carte = new DrawableServiteur(DrawableCarte.CardType.NEUTRAL_MOB, new Serviteur("Gnome Lépreux", 1, null, new Cap_Lepreux(), 1, 1));
-        carte.setTranslateX(-300);
-        root.getChildren().add(carte);
+        VBox btnList = new VBox();
+        btnList.setTranslateX(WINDOW_WIDTH/3);
+        btnList.setTranslateY(WINDOW_HEIGHT/3);
+        btnList.setPrefWidth(WINDOW_WIDTH/3);
         
-        DrawableSort carte2 = new DrawableSort(DrawableCarte.CardType.MAGE_SPELL, new Sort("Choc de flammes", 7, null, new AttaqueTotale("Attaque Massive", "Inflige 4 points de dégat aux serviteurs adverses", 4)));
-        root.getChildren().add(carte2);
+        Button btnPlay = new Button("Jouer");
+        btnPlay.setPrefWidth(WINDOW_WIDTH/3);
+        btnPlay.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
         
-        //DrawableServiteur carte3 = new DrawableServiteur(DrawableCarte.CardType.NEUTRAL_MOB, new Serviteur("Missilière Téméraire", 1, null, null, 1, 1));
-        //carte3.setTranslateX(300);
-        //root.getChildren().add(carte3);
+        btnList.getChildren().add(btnPlay);
         
-        DrawableJoueur j1 = new DrawableJoueur(new Joueur("LeoTheUnseen", Heros.getHeros("Jaina") ));
-        root.getChildren().add(j1);
-        j1.setTranslateX(400);
+        
+        
+        //Ajout liste bouton
+        root.getChildren().add(btnList);
+        
+        primaryStage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            btnList.setTranslateX((Double) newVal/3);
+            btnList.setPrefWidth((Double) newVal/3);
+            for(Node b : btnList.getChildren()) ((Button) b).setPrefWidth((Double) newVal/3);
+        });
+
+        primaryStage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            btnList.setTranslateY((Double) newVal/3);
+        });
         
         //Display
         primaryStage.setScene(scene);
