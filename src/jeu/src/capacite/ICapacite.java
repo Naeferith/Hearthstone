@@ -1,8 +1,8 @@
-package jeu.src;
+package jeu.src.capacite;
 
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Interface pour les capacités
  *
  * @author BAGNATO Thomas
  */

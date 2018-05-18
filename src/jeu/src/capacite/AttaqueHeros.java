@@ -1,6 +1,6 @@
 package jeu.src.capacite;
 
-import jeu.src.Heros;
+import jeu.src.heros.Heros;
 import jeu.src.IJoueur;
 import jeu.src.Plateau;
 import jeu.src.exception.HearthstoneException;

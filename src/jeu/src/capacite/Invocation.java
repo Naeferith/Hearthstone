@@ -1,7 +1,7 @@
 package jeu.src.capacite;
 
 import java.util.ArrayList;
-import jeu.src.ICarte;
+import jeu.src.carte.ICarte;
 import jeu.src.IJoueur;
 import jeu.src.IPlateau;
 import jeu.src.Plateau;

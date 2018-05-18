@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Classe plateau
  *
  * @author BAGNATO Thomas
  */

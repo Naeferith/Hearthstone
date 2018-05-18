@@ -1,22 +1,26 @@
-package jeu.src;
+package jeu.src.heros;
 
 import java.util.ArrayList;
-import jeu.src.capacite.*;
+import jeu.src.capacite.ICapacite;
+import jeu.src.carte.ICarte;
+import jeu.src.IPlateau;
+import jeu.src.Joueur;
+import jeu.src.Plateau;
 import jeu.src.exception.HearthstoneException;
 
 
-/**
+/**Classe pour les heros
  *
  * @author BAGNATO Thomas
  */
-public class Heros {
+public abstract class Heros implements IHeros{
     private static final int BASE_HP = 15; //Valeur initiale des points de vie au début d'un match
     
     //Les héros sont définis et donc ne peuvent pas etre créée par l'utilisateur
     private static final ArrayList<Heros> HEROS = new ArrayList<Heros>();
     static {
-        HEROS.add(new Heros("Jaina", new AttaqueCiblee("Boule de feu", "Inflige 1 point de dégat à une cible.", 1)));
-        HEROS.add(new Heros("Rexxar", new AttaqueHeros("Tir Assuré", "Inflige 2 points de dégat au héros adverse.", 2)));
+        HEROS.add(new Jaina());
+        HEROS.add(new Rexxar());
     };
 
     private String nom;
@@ -58,10 +62,14 @@ public class Heros {
     }
     
     //Séléction du héros par nom
-    public static Heros getHeros(String str) throws HearthstoneException {
+    public static Heros getHeros(String str) throws HearthstoneException, InstantiationException, IllegalAccessException {
         for (Heros heros : HEROS) {
-            if (heros.getNom().contains(str)) return new Heros(heros);
+            if (heros.getNom().contains(str)) return heros.getClass().newInstance();
         }
         throw new HearthstoneException("Heros non trouvé.");
     }
+    
+    //Complément au deck commun
+    @Override
+    public abstract ArrayList<ICarte> carteHeros(Joueur joueur);
 }

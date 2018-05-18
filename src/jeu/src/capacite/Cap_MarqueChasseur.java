@@ -2,7 +2,8 @@ package jeu.src.capacite;
 
 import jeu.src.carte.Serviteur;
 import jeu.src.exception.HearthstoneException;
-/**
+
+/**Capacité de la carte Marque du chasseur
  *
  * @author BAGNATO Thomas
  */

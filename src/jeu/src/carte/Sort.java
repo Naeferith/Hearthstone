@@ -5,7 +5,7 @@ import jeu.src.IJoueur;
 import jeu.src.Plateau;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Un sort est une carte à effetqui disparait après utilisation
  *
  * @author BAGNATO Thomas
  */

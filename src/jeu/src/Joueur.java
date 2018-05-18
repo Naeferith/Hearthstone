@@ -1,6 +1,8 @@
 package jeu.src;
 
-import static jeu.src.ICapacite.COUT_POUVOIR;
+import jeu.src.carte.ICarte;
+import jeu.src.heros.Heros;
+import static jeu.src.capacite.ICapacite.COUT_POUVOIR;
 import jeu.src.carte.Serviteur;
 import java.util.ArrayList;
 import java.util.Random;
@@ -9,7 +11,7 @@ import jeu.src.capacite.EffetPermanent;
 import jeu.src.capacite.Provocation;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Classe Joueur
  *
  * @author BAGNATO Thomas
  */
@@ -211,17 +213,7 @@ public class Joueur implements IJoueur {
     @Override
     public void setDeck() {
         this.deck.addAll(Deck.getDeckCommun(this));
-        switch (this.getHeros().getNom()) {
-            case "Jaina":
-                this.deck.addAll(Deck.getDeckJaina(this));
-                break;
-            case "Rexxar":
-                this.deck.addAll(Deck.getDeckRexxar(this));
-                break;
-            default:
-                //throw ?
-                break;
-        }
+        this.deck.addAll(this.heros.carteHeros(this));
     }
 
     public void setCurrentMana(int currentMana) {

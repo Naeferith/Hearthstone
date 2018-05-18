@@ -1,7 +1,7 @@
 package jeu.src.carte;
 
-import jeu.src.Heros;
-import jeu.src.ICapacite;
+import jeu.src.heros.Heros;
+import jeu.src.capacite.ICapacite;
 import jeu.src.IJoueur;
 import jeu.src.Joueur;
 import jeu.src.Plateau;
@@ -9,7 +9,7 @@ import jeu.src.capacite.Charge;
 import jeu.src.capacite.Provocation;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Un serviteur est une carte posable sur le terrain
  *
  * @author BAGNATO Thomas
  */
