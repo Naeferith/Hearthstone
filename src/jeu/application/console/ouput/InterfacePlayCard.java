@@ -28,7 +28,7 @@ public class InterfacePlayCard extends DialogInterface {
         System.out.println("Votre choix :");
         input = scanIn.nextLine();
         ICarte carteSelect = plateau.getJoueurCourant().getCarteEnMain(input);
-        if (carteSelect == null) System.out.println("Carte non trouvée");
+        if (carteSelect == null) throw new HearthstoneException("Carte non trouvée");
         else if (carteSelect.getCapacite() != null && carteSelect.getCapacite() instanceof AttaqueCiblee) {
             Output.printOpponentBoard();
             System.out.println("Choisissez votre cible (0 pour le héros adverse)");

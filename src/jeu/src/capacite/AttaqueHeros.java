@@ -41,7 +41,7 @@ public class AttaqueHeros extends Attaque {
 
     @Override
     public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
-        this.executerAction(cible);
+        this.executerAction(Plateau.getPlateau().getAdversaire((IJoueur) cible).getHeros());
     }
     
 }

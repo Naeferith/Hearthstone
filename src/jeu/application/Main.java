@@ -55,6 +55,7 @@ public class Main {
                 ihm.interact(choix);
             }
             catch (HearthstoneException e) { System.out.println("Erreur :" + e); }
+            catch (NumberFormatException e) { System.out.println("Entrée inconnue");}
         }
     }
     
@@ -67,6 +68,7 @@ public class Main {
                 ihm.interact(choix);
             }
             catch (HearthstoneException e) { System.out.println("Erreur :" + e); }
+            catch (NumberFormatException e) { System.out.println("Entrée inconnue");}
         }
     }
 }

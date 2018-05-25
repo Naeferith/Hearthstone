@@ -230,23 +230,7 @@ public class Joueur implements IJoueur {
         //aka Attaque serviteur vers cible adverse
         if (!((Serviteur) carte).canAttack()) throw new HearthstoneException("Le serviteur ne peut pas/plus attaquer ce tour.");
         if (((Serviteur) carte).getAtk() == 0) throw new HearthstoneException("Votre serviteur est trop faible pour attaquer.");
-        if (cible instanceof Heros) {
-            if (((Joueur) Plateau.getPlateau().getAdversaire(carte.getProprietaire())).isProvocation()) throw new HearthstoneException("Vous devez d'abbord cibles les serviteurs avec <Provocation>.");
-            else ((Heros) cible).setPv(((Heros) cible).getPv() - ((Serviteur) carte).getAtk());
-        }
-        else {
-            if (((Joueur) Plateau.getPlateau().getAdversaire(carte.getProprietaire())).isProvocation()) {
-                if (((Serviteur) cible).getCapacite() instanceof Provocation) {
-                    ((Serviteur) cible).setPv(((Serviteur) cible).getPv() - ((Serviteur) carte).getAtk());
-                    ((Serviteur) carte).setPv(((Serviteur) carte).getPv() - ((Serviteur) cible).getAtk());
-                }
-                else throw new HearthstoneException("Vous devez d'abbord cibles les serviteurs avec <Provocation>.");
-            }
-            else {
-                ((Serviteur) cible).setPv(((Serviteur) cible).getPv() - ((Serviteur) carte).getAtk());
-                ((Serviteur) carte).setPv(((Serviteur) carte).getPv() - ((Serviteur) cible).getAtk());
-            }
-        }
+        ((Serviteur) carte).executerAction(cible);
     }
 
     @Override
