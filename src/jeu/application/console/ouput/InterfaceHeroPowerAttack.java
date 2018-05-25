@@ -34,7 +34,7 @@ public class InterfaceHeroPowerAttack extends DialogInterface {
         }
         else {
             try {
-                plateau.getJoueurCourant().utiliserPouvoir(plateau.getJoueurCourant());
+                plateau.getJoueurCourant().utiliserPouvoir(plateau.getAdversaire(plateau.getJoueurCourant()));
             }
             catch (HearthstoneException e) {System.out.println("Erreur : " + e.getMessage());}
         }

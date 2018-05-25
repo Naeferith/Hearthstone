@@ -27,7 +27,7 @@ public final class Sort extends Carte {
 
     @Override
     public final void executerEffetDebutMiseEnJeu(Object cible) throws HearthstoneException {
-        if (this.getCout() > Plateau.getPlateau().getJoueurCourant().getStockMana()) throw new HearthstoneException("Mana Insuffisant.");
+        //if (this.getCout() > Plateau.getPlateau().getJoueurCourant().getStockMana()) throw new HearthstoneException("Mana Insuffisant.");
         
         this.getCapacite().executerEffetMiseEnJeu(cible);
         

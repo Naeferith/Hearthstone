@@ -22,9 +22,12 @@ public class Deck {
         deck.add(new Serviteur("Garde de baie-du-butin", 5, joueur, new Provocation(), 5, 4));
         deck.add(new Serviteur("Champion de Hurlevent" , 7, joueur, new EffetPermanent("Bonus de Hurlevent", "Vos autres serviteurs ont +1/+1", 1, 1), 6, 6));
         deck.add(new Serviteur("Chef de raid"          , 3, joueur, new EffetPermanent("Bonus du Chef de raid", "Vos autres serviteurs ont +1/+0", 1, 0), 2, 2));
-        deck.add(new Serviteur("Missilière téméraire"  , 6, joueur, new Charge(), 5, 2));
-        deck.add(new Serviteur("Ogre-Magi"             , 4, joueur, new Provocation(), 4, 4));
-        deck.add(new Serviteur("Archimage"             , 6, joueur, new Provocation(), 4, 7));
+        //deck.add(new Serviteur("Missilière téméraire"  , 6, joueur, new Charge(), 5, 2));
+        //deck.add(new Serviteur("Ogre-Magi"             , 4, joueur, new Provocation(), 4, 4));
+        //deck.add(new Serviteur("Archimage"             , 6, joueur, new Provocation(), 4, 7));
+        deck.add(new Serviteur("Gnome Lépreux"         , 1, joueur, new Cap_Lepreux(), 1, 1));
+        deck.add(new Serviteur("Gnome Lépreux"         , 1, joueur, new Cap_Lepreux(), 1, 1));
+        deck.add(new Serviteur("Gnome Lépreux"         , 1, joueur, new Cap_Lepreux(), 1, 1));
         deck.add(new Serviteur("Gnome Lépreux"         , 1, joueur, new Cap_Lepreux(), 1, 1));
         deck.add(new Serviteur("Golem des moissons"    , 3, joueur, new Cap_Golemisation(joueur), 2, 3));
         return deck;

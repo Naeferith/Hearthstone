@@ -25,6 +25,7 @@ public class InterfacePlayCard extends DialogInterface {
         
         System.out.println("Votre main :");
         for (ICarte carte : plateau.getJoueurCourant().getMain()) System.out.println(carte.toString());
+        System.out.println("Votre choix :");
         input = scanIn.nextLine();
         ICarte carteSelect = plateau.getJoueurCourant().getCarteEnMain(input);
         if (carteSelect == null) System.out.println("Carte non trouvée");

@@ -5,6 +5,7 @@ import jeu.src.heros.Heros;
 import static jeu.src.capacite.ICapacite.COUT_POUVOIR;
 import jeu.src.carte.Serviteur;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import jeu.database.Deck;
 import jeu.src.capacite.EffetPermanent;
@@ -235,8 +236,15 @@ public class Joueur implements IJoueur {
         }
         else {
             if (((Joueur) Plateau.getPlateau().getAdversaire(carte.getProprietaire())).isProvocation()) {
-                if (((Serviteur) cible).getCapacite() instanceof Provocation) ((Serviteur) cible).setPv(((Serviteur) cible).getPv() - ((Serviteur) carte).getAtk());
+                if (((Serviteur) cible).getCapacite() instanceof Provocation) {
+                    ((Serviteur) cible).setPv(((Serviteur) cible).getPv() - ((Serviteur) carte).getAtk());
+                    ((Serviteur) carte).setPv(((Serviteur) carte).getPv() - ((Serviteur) cible).getAtk());
+                }
                 else throw new HearthstoneException("Vous devez d'abbord cibles les serviteurs avec <Provocation>.");
+            }
+            else {
+                ((Serviteur) cible).setPv(((Serviteur) cible).getPv() - ((Serviteur) carte).getAtk());
+                ((Serviteur) carte).setPv(((Serviteur) carte).getPv() - ((Serviteur) cible).getAtk());
             }
         }
     }
@@ -247,4 +255,30 @@ public class Joueur implements IJoueur {
         this.getHeros().getPouvoir().executerAction(cible);
         this.setCurrentMana(this.currentMana - COUT_POUVOIR);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.pseudo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Joueur other = (Joueur) obj;
+        if (!Objects.equals(this.pseudo, other.pseudo)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

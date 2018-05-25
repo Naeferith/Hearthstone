@@ -77,7 +77,7 @@ public class Plateau implements IPlateau {
     @Override
     public final IJoueur getAdversaire(IJoueur joueur) throws HearthstoneException {
         if (!this.estDemaree()) throw new HearthstoneException("La partie n'est pas encore commencée.");
-        return (this.getJoueurCourant() == this.joueurs.get(0)) ? this.joueurs.get(1) : this.joueurs.get(0);
+        return (joueur.equals(this.joueurs.get(0))) ? this.joueurs.get(1) : this.joueurs.get(0);
     }
 
     @Override

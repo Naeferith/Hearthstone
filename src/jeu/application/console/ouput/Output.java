@@ -51,7 +51,10 @@ public final class Output {
         }
         
         int n = 0;
-        if (PLATEAU.estDemaree()) System.out.println("[Tour de "+ PLATEAU.getJoueurCourant().getPseudo() + "]\n");
+        if (PLATEAU.estDemaree()) {
+            System.out.println("[Tour de "+ PLATEAU.getJoueurCourant().getPseudo() + "]\n");
+            printPlayerStat();
+        }
         for (String s : menu) {
             System.out.println("" + n + ". " + s);
             n += 1;
@@ -87,7 +90,7 @@ public final class Output {
     
     public static final void printPlayerStat() {
         System.out.println(PLATEAU.getJoueurCourant().getHeros().getNom() + " : " + PLATEAU.getJoueurCourant().getHeros().getPv() +"pv / " 
-                + PLATEAU.getJoueurCourant().getStockMana() + " mana restant");
+                + PLATEAU.getJoueurCourant().getStockMana() + " mana restant\n");
     }
     
     public static final void printNewGameSummary() throws HearthstoneException {

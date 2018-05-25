@@ -20,7 +20,7 @@ public class AttaqueHeros extends Attaque {
         if (this.isUse()) throw new HearthstoneException("Pouvoir héroique déja utilisé ce tour.");
         else {
             this.setUse(true);
-            if (cible instanceof IJoueur) cible = (Heros) Plateau.getPlateau().getAdversaire((IJoueur) cible).getHeros();
+            if (cible instanceof IJoueur) cible = ((IJoueur)cible).getHeros(); /*Plateau.getPlateau().getAdversaire((IJoueur) cible).getHeros()*/;
             if (!(cible instanceof Heros)) throw new HearthstoneException("La cible doit être un héros.");
             //IPlateau plateau = Plateau.getPlateau();
             //IJoueur adv = plateau.getAdversaire(plateau.getJoueurCourant());
