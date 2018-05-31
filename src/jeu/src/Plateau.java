@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Classe plateau
  *
  * @author BAGNATO Thomas
  */
@@ -65,7 +65,7 @@ public class Plateau implements IPlateau {
 
     @Override
     public final void gagnePartie(IJoueur joueur) throws HearthstoneException {
-        System.out.println(this.getAdversaire(joueur).getPseudo() + " [" + this.getAdversaire(joueur).getHeros().getNom() + "] à gagné.");
+        System.out.println(this.getAdversaire((Joueur)joueur).getPseudo() + " [" + this.getAdversaire(joueur).getHeros().getNom() + "] à gagné.");
         
         //Fin de partie
         this.enCours = false;
@@ -77,7 +77,7 @@ public class Plateau implements IPlateau {
     @Override
     public final IJoueur getAdversaire(IJoueur joueur) throws HearthstoneException {
         if (!this.estDemaree()) throw new HearthstoneException("La partie n'est pas encore commencée.");
-        return (this.getJoueurCourant() == this.joueurs.get(0)) ? this.joueurs.get(1) : this.joueurs.get(0);
+        return (joueur.equals(this.joueurs.get(0))) ? this.joueurs.get(1) : this.joueurs.get(0);
     }
 
     @Override

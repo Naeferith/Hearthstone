@@ -1,3 +1,10 @@
 
+<<<<<<< HEAD
 nbproject/private/private.xml
 *.xml
+=======
+*.class
+*.jar
+*.xml
+*.properties
+>>>>>>> Alpha

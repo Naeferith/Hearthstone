@@ -1,6 +1,6 @@
 package jeu.src.capacite;
 
-import jeu.src.Heros;
+import jeu.src.heros.Heros;
 import jeu.src.carte.Serviteur;
 import jeu.src.exception.HearthstoneException;
 
@@ -34,5 +34,4 @@ public class AttaqueCiblee extends Attaque {
     public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
         this.executerAction(cible);
     }
-    
 }

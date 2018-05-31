@@ -1,12 +1,14 @@
-package jeu.src;
+package jeu.src.carte;
 
+import jeu.src.IJoueur;
+import jeu.src.capacite.ICapacite;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Interface pour les cartes
  *
  * @author BAGNATO Thomas
  */
-public interface ICarte extends Cloneable {
+public interface ICarte {
 
     public abstract boolean disparait();
     public abstract void executerAction(Object cible) throws HearthstoneException;

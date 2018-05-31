@@ -1,15 +1,18 @@
 package jeu.src;
 
-import static jeu.src.ICapacite.COUT_POUVOIR;
+import jeu.src.carte.ICarte;
+import jeu.src.heros.Heros;
+import static jeu.src.capacite.ICapacite.COUT_POUVOIR;
 import jeu.src.carte.Serviteur;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import jeu.database.Deck;
 import jeu.src.capacite.EffetPermanent;
 import jeu.src.capacite.Provocation;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Classe Joueur
  *
  * @author BAGNATO Thomas
  */
@@ -78,7 +81,6 @@ public class Joueur implements IJoueur {
         return this.heros;
     }
     
-    @Override
     public int getMana() {
         return this.mana;
     }
@@ -88,7 +90,6 @@ public class Joueur implements IJoueur {
        return this.pseudo;
     }
 
-    @Override
     public int getStockMana() {
         return this.currentMana;
     }
@@ -211,17 +212,7 @@ public class Joueur implements IJoueur {
     @Override
     public void setDeck() {
         this.deck.addAll(Deck.getDeckCommun(this));
-        switch (this.getHeros().getNom()) {
-            case "Jaina":
-                this.deck.addAll(Deck.getDeckJaina(this));
-                break;
-            case "Rexxar":
-                this.deck.addAll(Deck.getDeckRexxar(this));
-                break;
-            default:
-                //throw ?
-                break;
-        }
+        this.deck.addAll(this.heros.carteHeros(this));
     }
 
     public void setCurrentMana(int currentMana) {
@@ -237,16 +228,7 @@ public class Joueur implements IJoueur {
         //aka Attaque serviteur vers cible adverse
         if (!((Serviteur) carte).canAttack()) throw new HearthstoneException("Le serviteur ne peut pas/plus attaquer ce tour.");
         if (((Serviteur) carte).getAtk() == 0) throw new HearthstoneException("Votre serviteur est trop faible pour attaquer.");
-        if (cible instanceof Heros) {
-            if (((Joueur) Plateau.getPlateau().getAdversaire(carte.getProprietaire())).isProvocation()) throw new HearthstoneException("Vous devez d'abbord cibles les serviteurs avec <Provocation>.");
-            else ((Heros) cible).setPv(((Heros) cible).getPv() - ((Serviteur) carte).getAtk());
-        }
-        else {
-            if (((Joueur) Plateau.getPlateau().getAdversaire(carte.getProprietaire())).isProvocation()) {
-                if (((Serviteur) cible).getCapacite() instanceof Provocation) ((Serviteur) cible).setPv(((Serviteur) cible).getPv() - ((Serviteur) carte).getAtk());
-                else throw new HearthstoneException("Vous devez d'abbord cibles les serviteurs avec <Provocation>.");
-            }
-        }
+        ((Serviteur) carte).executerAction(cible);
     }
 
     @Override
@@ -254,5 +236,30 @@ public class Joueur implements IJoueur {
         if (this.getStockMana() < COUT_POUVOIR) throw new HearthstoneException("Mana insuffisant.");
         this.getHeros().getPouvoir().executerAction(cible);
         this.setCurrentMana(this.currentMana - COUT_POUVOIR);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.pseudo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Joueur other = (Joueur) obj;
+        if (!Objects.equals(this.pseudo, other.pseudo)) {
+            return false;
+        }
+        return true;
     }
 }

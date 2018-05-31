@@ -1,7 +1,7 @@
 package jeu.src.capacite;
 
 import java.util.ArrayList;
-import jeu.src.ICarte;
+import jeu.src.carte.ICarte;
 import jeu.src.IJoueur;
 import jeu.src.IPlateau;
 import jeu.src.Plateau;
@@ -52,5 +52,4 @@ public class Invocation extends Capacite {
     public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
         this.executerAction(cible);
     }
-    
 }

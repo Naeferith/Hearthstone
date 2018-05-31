@@ -2,7 +2,8 @@ package jeu.src.capacite;
 
 import jeu.src.carte.Serviteur;
 import jeu.src.exception.HearthstoneException;
-/**
+
+/**Capacité de la carte Marque du chasseur
  *
  * @author BAGNATO Thomas
  */
@@ -19,5 +20,4 @@ public final class Cap_MarqueChasseur extends AttaqueCiblee {
         if (cible instanceof Serviteur) ((Serviteur) cible).setPv(1);
         else throw new HearthstoneException("La cible doit etre un serviteur."); //throw wrong target
     }
-    
 }

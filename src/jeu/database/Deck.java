@@ -1,13 +1,13 @@
 package jeu.database;
 
 import java.util.ArrayList;
-import jeu.src.ICarte;
+import jeu.src.carte.ICarte;
 import jeu.src.IJoueur;
 import jeu.src.capacite.*;
 import jeu.src.carte.Serviteur;
 import jeu.src.carte.Sort;
 
-/**
+/**Classe comportant le deck commun à tout les héros
  *
  * @author BAGNATO Thomas
  */
@@ -27,28 +27,6 @@ public class Deck {
         deck.add(new Serviteur("Archimage"             , 6, joueur, new Provocation(), 4, 7));
         deck.add(new Serviteur("Gnome Lépreux"         , 1, joueur, new Cap_Lepreux(), 1, 1));
         deck.add(new Serviteur("Golem des moissons"    , 3, joueur, new Cap_Golemisation(joueur), 2, 3));
-        return deck;
-    }
-    
-    //Le complément de Jaina
-    public static ArrayList<ICarte> getDeckJaina(IJoueur joueur) {
-        ArrayList<ICarte> deck = new ArrayList<>();
-        deck.add(new Sort("Choc de flammes"         , 7 , joueur, new AttaqueTotale("Attaque Massive", "Inflige 4 points de dégat aux serviteurs adverses", 4)));
-        deck.add(new Sort("Eclair de givre"         , 2 , joueur, new AttaqueCiblee("Attaque du givre", "Inflige 5 points de dégats au héros adverse", 5)));
-        deck.add(new Sort("Explosion Pyrotechnique" , 10, joueur, new AttaqueCiblee("Explosion pyrotechnique", "Inflige 10 points de dégat à une cible", 10)));
-        deck.add(new Sort("Intelligence des arcanes", 2 , joueur, new Pioche(2)));
-        deck.add(new Sort("Image miroir"            , 1 , joueur, new Cap_ImageMiroir()));
-        return deck;
-    }
-    
-    //Le complément de Rexxar
-    public static ArrayList<ICarte> getDeckRexxar(IJoueur joueur) {
-        ArrayList<ICarte> deck = new ArrayList<>();
-        deck.add(new Sort("Marque du chasseur" , 1, joueur, new Cap_MarqueChasseur()));
-        deck.add(new Sort("Tir des arcanes"    , 1, joueur, new AttaqueCiblee("Attaque du givre", "Inflige 5 points de dégats au héros adverse", 5)));
-        deck.add(new Sort("Lacher les chiens"  , 3, joueur, new AttaqueCiblee("Explosion pyrotechnique", "Inflige 10 points de dégat à une cible", 10)));
-        deck.add(new Sort("Ordre de tuer"      , 3, joueur, new Pioche(2)));
-        deck.add(new Serviteur("Busard affamé", 5, joueur, new Pioche(1), 3, 2));
         return deck;
     }
 }

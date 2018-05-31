@@ -1,7 +1,7 @@
 package jeu.src.carte;
 
-import jeu.src.Heros;
-import jeu.src.ICapacite;
+import jeu.src.heros.Heros;
+import jeu.src.capacite.ICapacite;
 import jeu.src.IJoueur;
 import jeu.src.Joueur;
 import jeu.src.Plateau;
@@ -9,7 +9,7 @@ import jeu.src.capacite.Charge;
 import jeu.src.capacite.Provocation;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Un serviteur est une carte posable sur le terrain
  *
  * @author BAGNATO Thomas
  */
@@ -46,15 +46,18 @@ public final class Serviteur extends Carte {
         Plateau plateau = (Plateau) Plateau.getPlateau();
         IJoueur adv = plateau.getAdversaire(plateau.getJoueurCourant());
         
-        //Si la cible est un heros, il ne doit pas y avoir de serviteurs sur le terrain
+        //Si la cible est un heros, il ne doit pas y avoir de serviteurs avec Provocation sur le terrain
         if (cible instanceof Heros) {
             if (((Joueur) adv).isProvocation()) throw new HearthstoneException("Il faut d'abbord éliminer les serviteurs avec provocation.");
             else ((Heros) cible).setPv( ((Heros) cible).getPv() - this.atk);
         }
         //Si la cible est un serviteur, il doit avoir Provocation en priorité
         else {
-            if (!(((Serviteur) cible).getCapacite() instanceof Provocation)) ((Serviteur) cible).setPv( ((Serviteur) cible).getPv() - this.atk);
-            else throw new HearthstoneException("Il faut d'abbord éliminer les serviteurs avec provocation.");
+            if (((Joueur) adv).isProvocation()) {
+                if (!(((Serviteur) cible).getCapacite() instanceof Provocation)) throw new HearthstoneException("Il faut d'abbord éliminer les serviteurs avec provocation.");
+            }
+            ((Serviteur) cible).setPv(((Serviteur) cible).getPv() - this.getAtk());
+            this.setPv(this.getPv() - ((Serviteur) cible).getAtk());
         }
     }
 

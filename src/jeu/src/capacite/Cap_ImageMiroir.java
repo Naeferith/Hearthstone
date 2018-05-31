@@ -3,7 +3,7 @@ package jeu.src.capacite;
 import jeu.src.Plateau;
 import jeu.src.carte.Serviteur;
 
-/**
+/**Capacité de la carte Image Miroir
  *
  * @author BAGNATO Thomas
  */
@@ -17,5 +17,4 @@ public final class Cap_ImageMiroir extends Invocation {
     public final void executerEffetMiseEnJeu(Object cible) {
         super.executerAction(cible);
     }
-    
 }

@@ -4,7 +4,7 @@ import jeu.src.IJoueur;
 import jeu.src.Plateau;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Capacité de la carte Gnome Lépreux
  *
  * @author BAGNATO Thomas
  */

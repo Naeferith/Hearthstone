@@ -5,7 +5,7 @@ import jeu.src.Plateau;
 import jeu.src.carte.Serviteur;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Capacité de la carte Lacher les chiens
  *
  * @author BAGNATO Thomas
  */

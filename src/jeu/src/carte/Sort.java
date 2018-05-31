@@ -5,7 +5,7 @@ import jeu.src.IJoueur;
 import jeu.src.Plateau;
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Un sort est une carte à effetqui disparait après utilisation
  *
  * @author BAGNATO Thomas
  */
@@ -26,9 +26,7 @@ public final class Sort extends Carte {
     public final void executerAction(Object cible) {}
 
     @Override
-    public final void executerEffetDebutMiseEnJeu(Object cible) throws HearthstoneException {
-        if (this.getCout() > Plateau.getPlateau().getJoueurCourant().getStockMana()) throw new HearthstoneException("Mana Insuffisant.");
-        
+    public final void executerEffetDebutMiseEnJeu(Object cible) throws HearthstoneException {        
         this.getCapacite().executerEffetMiseEnJeu(cible);
         
         //Après execution de la capacité, on détruit la carte

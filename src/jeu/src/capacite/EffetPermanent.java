@@ -1,6 +1,6 @@
 package jeu.src.capacite;
 
-import jeu.src.ICarte;
+import jeu.src.carte.ICarte;
 import jeu.src.IJoueur;
 import jeu.src.carte.Serviteur;
 import jeu.src.exception.HearthstoneException;
@@ -54,5 +54,4 @@ public final class EffetPermanent extends Capacite {
             ((Serviteur) carte).setPv(((Serviteur) carte).getPv() + bonusPv);
         }
     }
-    
 }

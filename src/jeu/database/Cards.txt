@@ -1,3 +1,0 @@
-#BASE DE DONNEES DES CARTES DE JEU
-# Data pattern : ID;AVALIABILITY;TYPE;NOM;MANA;ATK;PV;{DESCRIPTION}
-0;0;Serviteur;Chasse-Marée Murloc;2;2;1;

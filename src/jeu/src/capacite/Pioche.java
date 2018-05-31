@@ -33,6 +33,4 @@ public final class Pioche extends Capacite {
     public final void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
         this.executerAction(cible);
     }
-    
-    
 }

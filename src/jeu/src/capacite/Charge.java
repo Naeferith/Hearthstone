@@ -1,6 +1,6 @@
 package jeu.src.capacite;
 
-/**Permet au serviteur d'attaquer au moment de sa pose
+/**Permet au serviteur d'attaquer au moment de sa pose sur le terrain
  *
  * @author BAGNATO Thomas
  */
@@ -25,7 +25,5 @@ public class Charge extends Capacite {
     @Override
     public void executerEffetMiseEnJeu(Object cible) {
         //Un serviteur posé avec charge peut ne pas attaquer.
-        
     }
-    
 }

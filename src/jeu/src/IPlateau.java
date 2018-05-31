@@ -2,7 +2,7 @@ package jeu.src;
 
 import jeu.src.exception.HearthstoneException;
 
-/**
+/**Interface du plateau de jeu
  *
  * @author BAGNATO Thomas
  */
