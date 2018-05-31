@@ -1,6 +1,6 @@
 package jeu.application.console.ouput;
 
-import jeu.application.Main;
+import jeu.application.console.Main;
 import jeu.src.IPlateau;
 import jeu.src.Plateau;
 import jeu.src.exception.HearthstoneException;

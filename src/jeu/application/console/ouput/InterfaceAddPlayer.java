@@ -3,7 +3,7 @@ package jeu.application.console.ouput;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jeu.application.Main;
+import jeu.application.console.Main;
 import jeu.src.IPlateau;
 import jeu.src.Joueur;
 import jeu.src.Plateau;

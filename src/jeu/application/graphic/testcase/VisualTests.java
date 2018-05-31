@@ -25,18 +25,21 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import jeu.application.graphic.assets.DrawableHeroPower;
 import jeu.application.graphic.assets.DrawableJoueur;
 import jeu.application.graphic.assets.HearthstoneDisclaimer;
 import jeu.application.graphic.assets.card.DrawableCarte;
 import jeu.application.graphic.assets.card.DrawableServiteur;
 import jeu.application.graphic.assets.card.DrawableSort;
-import jeu.src.Heros;
+import jeu.src.heros.Heros;
+import jeu.src.IJoueur;
 import jeu.src.Joueur;
 import jeu.src.capacite.AttaqueTotale;
 import jeu.src.capacite.Cap_Lepreux;
 import jeu.src.carte.Serviteur;
 import jeu.src.carte.Sort;
 import jeu.src.exception.HearthstoneException;
+import jeu.src.heros.Jaina;
 
 /**
  *
@@ -74,7 +77,9 @@ public class VisualTests extends Application {
         root.setLeft(btnList);
         
         //Elements throwing Hearthstone exeption
-        DrawableJoueur j1 = new DrawableJoueur(new Joueur("LeoTheUnseen", Heros.getHeros("Jaina") ));
+        IJoueur joueur = new Joueur("LeoTheUnseen", new Jaina());
+        DrawableJoueur j1 = new DrawableJoueur(joueur);
+        DrawableHeroPower hp1 = new DrawableHeroPower(joueur);
         
         //Boutons
         VisualButton btn = new VisualButton("Serviteur");
@@ -143,6 +148,17 @@ public class VisualTests extends Application {
                 visualContainer.getChildren().add(item);
                 
                 ExceptionAnimation(item);
+            }
+        });
+        
+        VisualButton btn5 = new VisualButton("HeroPower");
+        btn5.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                clearVisual(visualContainer);
+                hp1.setTranslateX((WINDOW_WIDTH - hp1.getLayoutBounds().getWidth())/2 - hp1.getLayoutBounds().getWidth()/2);
+                hp1.setTranslateY((WINDOW_HEIGHT - hp1.getLayoutBounds().getHeight())/2);
+                visualContainer.getChildren().add(hp1);
             }
         });
         
