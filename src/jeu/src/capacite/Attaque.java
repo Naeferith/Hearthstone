@@ -10,6 +10,5 @@ public abstract class Attaque extends Capacite {
     public Attaque(String nom, String description, int damage) {
         super(nom, description);
         this.damage = damage;
-    } 
-    
+    }
 }

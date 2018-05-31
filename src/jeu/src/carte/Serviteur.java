@@ -49,9 +49,7 @@ public final class Serviteur extends Carte {
         //Si la cible est un heros, il ne doit pas y avoir de serviteurs avec Provocation sur le terrain
         if (cible instanceof Heros) {
             if (((Joueur) adv).isProvocation()) throw new HearthstoneException("Il faut d'abbord éliminer les serviteurs avec provocation.");
-            else {
-                ((Heros) cible).setPv( ((Heros) cible).getPv() - this.atk);
-            }
+            else ((Heros) cible).setPv( ((Heros) cible).getPv() - this.atk);
         }
         //Si la cible est un serviteur, il doit avoir Provocation en priorité
         else {

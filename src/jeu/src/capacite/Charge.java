@@ -25,7 +25,5 @@ public class Charge extends Capacite {
     @Override
     public void executerEffetMiseEnJeu(Object cible) {
         //Un serviteur posé avec charge peut ne pas attaquer.
-        
     }
-    
 }

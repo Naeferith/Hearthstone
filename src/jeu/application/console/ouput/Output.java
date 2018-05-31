@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import jeu.src.carte.ICarte;
 import jeu.src.IPlateau;
+import jeu.src.Joueur;
 import jeu.src.Plateau;
 import jeu.src.capacite.Provocation;
 import jeu.src.carte.Serviteur;
@@ -69,28 +70,13 @@ public final class Output {
         for (ICarte carte : PLATEAU.getJoueurCourant().getMain()) System.out.println(carte.toString());
     }
     
-    public static final void printMenuAction() {
-        System.out.println("1. Afficher Main");
-        System.out.println("2. Afficher Jeu");
-        System.out.println("3. Jouer Carte");
-        System.out.println("4. Attaquer");
-        System.out.println("5. Utiliser pouvoir Héroique");
-        System.out.println("0. Finir le tour");
-        System.out.print("Choix : ");
-    }
-    
-    public static final void printMenuAttack() {
-        printHand();
-        System.out.print("Quelle carte voulez vous jouer ? : ");
-    }
-    
     public static final void printOpponentStat() throws HearthstoneException {
         System.out.println(PLATEAU.getAdversaire(PLATEAU.getJoueurCourant()).getHeros().getNom() + " : " + PLATEAU.getAdversaire(PLATEAU.getJoueurCourant()).getHeros().getPv() + "pv");
     }
     
     public static final void printPlayerStat() {
         System.out.println(PLATEAU.getJoueurCourant().getHeros().getNom() + " : " + PLATEAU.getJoueurCourant().getHeros().getPv() +"pv / " 
-                + PLATEAU.getJoueurCourant().getStockMana() + " mana restant\n");
+                + ((Joueur)PLATEAU.getJoueurCourant()).getStockMana() + " mana restant\n");
     }
     
     public static final void printNewGameSummary() throws HearthstoneException {

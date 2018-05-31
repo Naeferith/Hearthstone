@@ -31,5 +31,4 @@ public class Rexxar extends Heros {
         deck.add(new Serviteur("Busard affamé", 5, joueur, new Pioche(1), 3, 2));
         return deck;
     }
-    
 }

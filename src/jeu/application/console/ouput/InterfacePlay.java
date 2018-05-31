@@ -31,5 +31,4 @@ public class InterfacePlay extends DialogInterface {
     public String getDescription() {
         return "Jouer";
     }
-    
 }

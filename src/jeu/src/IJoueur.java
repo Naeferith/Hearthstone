@@ -25,9 +25,7 @@ public interface IJoueur {
     public abstract Heros getHeros();
     public abstract ArrayList<ICarte> getJeu();
     public abstract ArrayList<ICarte> getMain();
-    public abstract int getMana();
     public abstract String getPseudo();
-    public abstract int getStockMana();
     public abstract void jouerCarte(ICarte carte) throws HearthstoneException;
     public abstract void jouerCarte(ICarte carte, Object cible) throws HearthstoneException;
     public abstract void perdreCarte(ICarte carte) throws HearthstoneException;

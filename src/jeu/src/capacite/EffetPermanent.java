@@ -54,5 +54,4 @@ public final class EffetPermanent extends Capacite {
             ((Serviteur) carte).setPv(((Serviteur) carte).getPv() + bonusPv);
         }
     }
-    
 }

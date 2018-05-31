@@ -17,5 +17,4 @@ public final class Cap_ImageMiroir extends Invocation {
     public final void executerEffetMiseEnJeu(Object cible) {
         super.executerAction(cible);
     }
-    
 }

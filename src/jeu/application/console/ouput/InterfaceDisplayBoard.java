@@ -21,5 +21,4 @@ public class InterfaceDisplayBoard extends DialogInterface {
     public String getDescription() {
         return "Afficher le terrain de jeu";
     }
-    
 }

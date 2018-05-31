@@ -34,5 +34,4 @@ public class AttaqueCiblee extends Attaque {
     public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
         this.executerAction(cible);
     }
-    
 }

@@ -52,5 +52,4 @@ public class Invocation extends Capacite {
     public void executerEffetMiseEnJeu(Object cible) throws HearthstoneException {
         this.executerAction(cible);
     }
-    
 }

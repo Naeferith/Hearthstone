@@ -19,5 +19,4 @@ public class InterfaceQuit extends DialogInterface {
     public String getDescription() {
         return "Quitter";
     }
-    
 }

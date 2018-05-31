@@ -22,5 +22,4 @@ public class InterfaceEndTurn extends DialogInterface {
     public String getDescription() {
         return "Fin du tour";
     }
-    
 }

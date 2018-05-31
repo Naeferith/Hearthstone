@@ -20,5 +20,4 @@ public class Cap_Golemisation extends Invocation {
     
     @Override
     public void executerEffetMiseEnJeu(Object cible) {}
-    
 }

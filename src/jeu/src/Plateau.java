@@ -65,7 +65,7 @@ public class Plateau implements IPlateau {
 
     @Override
     public final void gagnePartie(IJoueur joueur) throws HearthstoneException {
-        System.out.println(this.getAdversaire(joueur).getPseudo() + " [" + this.getAdversaire(joueur).getHeros().getNom() + "] à gagné.");
+        System.out.println(this.getAdversaire((Joueur)joueur).getPseudo() + " [" + this.getAdversaire(joueur).getHeros().getNom() + "] à gagné.");
         
         //Fin de partie
         this.enCours = false;

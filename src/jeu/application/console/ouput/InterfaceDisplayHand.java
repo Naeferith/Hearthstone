@@ -19,5 +19,4 @@ public class InterfaceDisplayHand extends DialogInterface {
     public String getDescription() {
         return "Afficher la main";
     }
-    
 }

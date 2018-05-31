@@ -45,5 +45,4 @@ public abstract class Carte implements ICarte {
     public String toString(){
         return this.nom + " - " + this.mana + " mana";
     }
-    
 }

@@ -51,5 +51,4 @@ public class InterfacePlayCard extends DialogInterface {
     public String getDescription() {
         return "Jouer une carte";
     }
-    
 }

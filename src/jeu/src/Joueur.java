@@ -81,7 +81,6 @@ public class Joueur implements IJoueur {
         return this.heros;
     }
     
-    @Override
     public int getMana() {
         return this.mana;
     }
@@ -91,7 +90,6 @@ public class Joueur implements IJoueur {
        return this.pseudo;
     }
 
-    @Override
     public int getStockMana() {
         return this.currentMana;
     }
@@ -264,5 +262,4 @@ public class Joueur implements IJoueur {
         }
         return true;
     }
-    
 }

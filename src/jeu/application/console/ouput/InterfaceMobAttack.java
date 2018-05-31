@@ -46,5 +46,4 @@ public class InterfaceMobAttack extends DialogInterface {
     public String getDescription() {
         return "Attaquer avec un serviteur";
     }
-    
 }
