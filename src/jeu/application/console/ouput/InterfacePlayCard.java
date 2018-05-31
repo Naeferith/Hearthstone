@@ -25,7 +25,11 @@ public class InterfacePlayCard extends DialogInterface {
         
         System.out.println("Votre main :");
         for (ICarte carte : plateau.getJoueurCourant().getMain()) System.out.println(carte.toString());
+<<<<<<< HEAD
         System.out.println("Votre choix :");
+=======
+        System.out.println("Quelle carte choisissez vous ? : ");
+>>>>>>> cfcaf9066c8276ba9a9df9d5e8715ac9b5e60902
         input = scanIn.nextLine();
         ICarte carteSelect = plateau.getJoueurCourant().getCarteEnMain(input);
         if (carteSelect == null) throw new HearthstoneException("Carte non trouvée");

@@ -52,10 +52,14 @@ public final class Output {
         }
         
         int n = 0;
+<<<<<<< HEAD
         if (PLATEAU.estDemaree()) {
             System.out.println("[Tour de "+ PLATEAU.getJoueurCourant().getPseudo() + "]\n");
             printPlayerStat();
         }
+=======
+        if (PLATEAU.estDemaree()) System.out.println("[Tour de "+ PLATEAU.getJoueurCourant().getPseudo() + "] - Mana : " + PLATEAU.getJoueurCourant().getStockMana() + " / " +  PLATEAU.getJoueurCourant().getMana()  + "\n");
+>>>>>>> cfcaf9066c8276ba9a9df9d5e8715ac9b5e60902
         for (String s : menu) {
             System.out.println("" + n + ". " + s);
             n += 1;
